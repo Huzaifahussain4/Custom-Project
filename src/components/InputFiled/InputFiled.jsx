@@ -1,0 +1,307 @@
+import { Search } from "@mui/icons-material";
+import { IconButton, Paper } from "@mui/material";
+import React, { useState } from "react";
+// import PhoneInput from "react-phone-input-2";
+// import "react-phone-input-2/lib/style.css";
+import "../InputFiled/style.css";
+import SaveAltIcon from "@mui/icons-material/SaveAlt";
+import EditIcon from "@mui/icons-material/Edit";
+
+export function InputFiled({ typeValue, placeholderValue, onChange }) {
+  return (
+    <Paper
+      component="form"
+      sx={{
+        borderRadius: "15px",
+        border: "1px solid gray",
+        bgcolor: "#1a1a1a",
+        boxShadow: "none",
+        width: { md: "100%", sm: "100%", xs: "100%" },
+        marginTop: 1,
+        marginBottom: 1,
+        padding: "0px",
+      }}
+    >
+      <input
+        onChange={onChange}
+        type={typeValue}
+        placeholder={placeholderValue}
+        className="customFieldSearchBar"
+        style={{
+          // outline: "none",
+          border: "none",
+          width: "100%",
+          backgroundColor: "#1a1a1a",
+          padding: "20px 0 20px 10px",
+          borderRadius: "15px",
+          color: "#fff",
+          fontSize: "16px",
+          boxSizing: "border-box",
+        }}
+      />
+    </Paper>
+  );
+}
+
+// export function PhoneNumberField({ typeValue, placeholderValue, onChange }) {
+//   const [phone, setPhone] = useState("");
+//   console.log("🚀 ~ PhoneNumberField ~ phone:", phone);
+//   const [countryCode, setCountryCode] = useState("us");
+//   console.log("🚀 ~ PhoneNumberField ~ countryCode:", countryCode);
+
+//   return (
+//     <Paper
+//       component="form"
+//       sx={{
+//         borderRadius: 3,
+//         border: "none",
+//         bgcolor: "#1a1a1a",
+//         boxShadow: "none",
+//         width: { md: "100%", sm: "100%", xs: "100%" },
+//         marginTop: 1,
+//         marginBottom: 1,
+//       }}
+//     >
+//       <PhoneInput
+//         country={countryCode} // Set the default country code
+//         value={phone} // Set the phone number value
+//         onChange={(phone, country) => {
+//           setPhone(phone); // Update the phone number state
+//           setCountryCode(country?.countryCode); // Update the country code state if needed
+//           if (onChange) {
+//             onChange(phone); // Call the passed `onChange` prop if provided
+//           }
+//         }}
+//         placeholder={placeholderValue || "Enter phone number"}
+//         inputStyle={{
+//           width: "100%",
+//           backgroundColor: "#1a1a1a",
+//           border: "none",
+//           color: "#fff",
+//           padding: "10px",
+//           borderRadius: "5px",
+//         }}
+//         buttonStyle={{
+//           backgroundColor: "#1a1a1a",
+//           border: "none",
+//         }}
+//         dropdownStyle={{
+//           backgroundColor: "#1a1a1a",
+//           color: "#fff",
+//         }}
+//       />
+//     </Paper>
+//   );
+// }
+
+export function CustomFiled({ typeValue, placeholderValue, onChange }) {
+  return (
+    <Paper
+      component="form"
+      sx={{
+        borderRadius: "15px",
+        border: "1px solid gray",
+        bgcolor: "#1a1a1a",
+        boxShadow: "none",
+        width: { md: "100%", sm: "100%", xs: "100%" },
+        marginTop: 1,
+        padding: "0px",
+      }}
+    >
+      <input
+        onChange={onChange}
+        type={typeValue}
+        placeholder={placeholderValue}
+        className="customFieldSearchBar"
+        style={{
+          // outline: "none",
+          border: "none",
+          width: "100%",
+          backgroundColor: "#1a1a1a",
+          padding: "20px 0px 20px 10px",
+          borderRadius: "15px",
+          color: "#fff",
+          fontSize: "16px",
+          boxSizing: "border-box",
+        }}
+      />
+    </Paper>
+  );
+}
+
+export const SearchField = () => {
+  // const [searchTerm, setSearchTerm] = useState("");
+
+  // const navigate = useNavigate();
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (searchTerm) {
+  //     navigate(`/search/${searchTerm}`);
+  //     setSearchTerm("");
+  //   }
+  // };
+
+  return (
+    <Paper
+      // component="form"
+      // onSubmit={handleSubmit}
+      sx={{
+        borderRadius: 3,
+        pl: 2,
+        boxShadow: "none",
+        width: { md: "50%", sm: "70%" },
+        // mr: { sm: 5, md: 50, xs: 2 },
+        display: "flex",
+        justifyContent: "space-between",
+        bgcolor: "#1a1a1a",
+      }}
+    >
+      <input
+        // onChange={(e) => setSearchTerm(e.target.value)}
+        // value={searchTerm}
+        placeholder="Search..."
+        className="searchBar"
+        style={{
+          padding: "10px",
+          border: "none",
+          outline: "none",
+          width: "90%",
+          backgroundColor: "#1a1a1a",
+          color: "white",
+          fontSize: "16px",
+        }}
+      />
+      <IconButton type="submit" sx={{ p: "10px", color: "rgb(145,18,190)" }}>
+        <Search />
+      </IconButton>
+    </Paper>
+  );
+};
+
+/**
+ * A component that renders an input field with an edit/save button.
+ * If `edit` is true, the input field is editable and the button is a save icon.
+ * If `edit` is false, the input field is readonly and the button is an edit icon.
+ * When the button is clicked, the state of `edit` is toggled.
+ *
+ * @param {string} typeValue - The type of the input field.
+ * @param {string} placeholderValue - The placeholder text of the input field.
+ * @param {function} onChange - The function to call when the input field changes.
+ * @param {ReactElement} icons - The React element to render as the button.
+ * @param {function} onclick - The function to call when the button is clicked.
+ * @param {string} fieldValue - The value of the input field.
+ * @param {boolean} disabled - Whether the input field is disabled.
+ * @param {boolean} edit - Whether the input field is editable.
+ */
+
+export function IconsFiled({
+  typeValue,
+  placeholderValue,
+  onChange,
+  icons,
+  onclick,
+  fieldValue,
+  disabled,
+  edit,
+}) {
+  const [isEditable, setIsEditable] = useState(false);
+  const [inputValue, setInputValue] = useState("Pre-filled text");
+
+  const handleEditClick = (e) => {
+    e.preventDefault();
+    setIsEditable((prev) => !prev);
+    console.log("Clicked on Edit");
+  };
+
+  // const handleInputChange = (e) => {
+  //   setInputValue(e.target.value);
+  // };
+
+  return (
+    <Paper
+      sx={{
+        borderRadius: "15px",
+        border: "1px solid gray",
+        bgcolor: "#1a1a1a",
+        boxShadow: "none",
+        width: { md: "100%", sm: "100%", xs: "100%" },
+        marginTop: 1,
+        marginBottom: 1,
+        display: "flex",
+        justifyContent: "space-between",
+        transition: "border-color 0.3s ease",
+      }}
+      className="inputFieldSearchBar"
+    >
+      <input
+        onChange={onChange}
+        type={typeValue}
+        value={fieldValue}
+        placeholder={placeholderValue}
+        disabled={!isEditable}
+        style={{
+          outline: "none",
+          border: "none",
+          width: "100%",
+          backgroundColor: "#1a1a1a",
+          padding: "20px 0 20px 10px",
+          borderRadius: "15px",
+          color: "#fff",
+          fontSize: "16px",
+          boxSizing: "border-box",
+        }}
+      />
+      <IconButton
+        type="submit"
+        onClick={handleEditClick}
+        sx={{ p: "10px", color: "rgb(145,18,190)" }}
+      >
+        {isEditable ? <SaveAltIcon /> : <EditIcon />}
+      </IconButton>
+    </Paper>
+  );
+}
+
+export function OtpFields({ spanText, typeValue, placeholder, onChange }) {
+  return (
+    <>
+      <span
+        style={{
+          color: "white",
+          width: "50%",
+          marginTop: "20px",
+          fontWeight: "300",
+        }}
+      >
+        {spanText}
+      </span>
+      <Paper
+        sx={{
+          borderRadius: "15px",
+          border: "2px solid rgb(187, 0, 255)",
+          bgcolor: "rgba(0, 0, 0, 0.2)",
+          boxShadow: "none",
+          width: { md: "100%", sm: "100%", xs: "100%" },
+          marginTop: 1,
+        }}
+      >
+        <input
+          onChange={onChange}
+          type={typeValue}
+          placeholder={placeholder}
+          style={{
+            border: "none",
+            width: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.2)",
+            padding: "20px 0px 20px 10px",
+            borderRadius: "12px",
+            color: "#fff",
+            fontSize: "16px",
+            boxSizing: "border-box",
+          }}
+        />
+      </Paper>
+    </>
+  );
+}

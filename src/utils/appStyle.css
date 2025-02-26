@@ -1,0 +1,17 @@
+:root {
+    --bg-primary: #0A192F;
+    --bg-secondary: #112240;
+    --surface: #1B2A4A;
+    --accent-1: #4ECDC4;
+    --accent-2: #FF6B6B;
+    --accent-3: #F5A623;
+    --text-primary: #E0E7FF;
+    --text-secondary: #A8B2D1;
+    --border: #233554;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
