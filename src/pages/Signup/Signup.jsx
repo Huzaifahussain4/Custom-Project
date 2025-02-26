@@ -284,7 +284,7 @@ const Signup = () => {
         >
           Already have an account?
           <Link
-            to="/login"
+            to="/"
             style={{
               marginLeft: "5px",
               color: "white",
