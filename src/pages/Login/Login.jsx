@@ -222,7 +222,7 @@ const Login = () => {
         </Box>
 
         {/* Signup Link */}
-        {/* <span style={{ color: "#fff", marginTop: "30px" }}>
+        <span style={{ color: "#fff", marginTop: "30px" }}>
           Create your account
           <Link
             to="/signup"
@@ -236,7 +236,7 @@ const Login = () => {
           >
             Signup
           </Link>
-        </span> */}
+        </span>
       </Box>
 
       {/* Toast Notifications */}

@@ -97,10 +97,11 @@ const Signup = () => {
         <span
           style={{
             width: "70%",
-            fontSize: "50px",
+            fontSize: "40px",
             color: "white",
             textAlign: "center",
             fontWeight: "600",
+            lineHeight: "50px",
           }}
         >
           Collaborate Seamlessly
@@ -109,7 +110,7 @@ const Signup = () => {
           style={{
             marginTop: "10px",
             width: "40%",
-            fontSize: "20px",
+            fontSize: "15px",
             color: "white",
             textAlign: "center",
             fontWeight: "300",
