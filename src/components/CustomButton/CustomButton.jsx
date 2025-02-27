@@ -1,7 +1,7 @@
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import React from "react";
 
-const CustomButton = ({ icon, text, onClick, disabled }) => {
+export const CustomButton = ({ icon, text, onClick, disabled }) => {
   return (
     <Button
       className="custom-btn"
@@ -54,4 +54,19 @@ const CustomButton = ({ icon, text, onClick, disabled }) => {
   );
 };
 
-export default CustomButton;
+export const SlideButton = ({ checked, onchange }) => {
+  return (
+    <Box>
+      <label for="filter" class="switch" aria-label="Toggle Filter">
+        <input
+          type="checkbox"
+          id="filter"
+          checked={checked}
+          onChange={onchange}
+        />
+        <span>Buyer</span>
+        <span>Seller</span>
+      </label>
+    </Box>
+  );
+};

@@ -11,12 +11,12 @@ import axios from "axios";
 import "../../utils/appStyle.css";
 // import darkBlueTheme from "./utils/theme.jsx";
 
-const Login = () => {
+const SellerLogin = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [validate, setValidate] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isBuyer, setIsBuyer] = useState(true);
+  const [isBuyer, setIsBuyer] = useState(false);
   console.log("🚀 ~ Login ~ isBuyer:", isBuyer);
 
   const navigate = useNavigate();
@@ -138,7 +138,7 @@ const Login = () => {
         </Box>
 
         <h1 style={{ color: "white", marginBottom: "10px" }}>
-          Login to your buyer account
+          Login to your seller account
         </h1>
         <p style={{ color: "white", marginBottom: "20px" }}>
           Enter your credentials
@@ -290,4 +290,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SellerLogin;
