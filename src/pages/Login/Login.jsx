@@ -5,8 +5,8 @@ import GoogleIcon from "@mui/icons-material/Google";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
 import { Link, useNavigate } from "react-router-dom";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 // import darkBlueTheme from "./utils/theme.jsx";
 
@@ -18,48 +18,50 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  // const validateInputs = () => {
-  //   if (!login || !password) {
-  //     setValidate("All fields are required");
-  //     toast.error("All fields are required");
-  //     return false;
-  //   }
-  //   return true;
-  // };
+  const validateInputs = () => {
+    if (!login || !password) {
+      setValidate("All fields are required");
+      toast.error("All fields are required");
+      return false;
+    }
+    return true;
+  };
 
-  // const loginHandle = async (e) => {
-  //   e.preventDefault();
-  //   const payload = {
-  //     login,
-  //     password,
-  //   };
+  const loginHandle = async (e) => {
+    e.preventDefault();
+    const payload = {
+      email: login,
+      password,
+    };
 
-  //   try {
-  //     if (validateInputs()) {
-  //       setIsLoading(true);
-  //       const response = await axios.post(
-  //         `${import.meta.env.VITE_API_URL}/api/v1/auth/login`,
-  //         payload
-  //       );
+    try {
+      if (validateInputs()) {
+        setIsLoading(true);
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_URL}/api/login_buyer/`,
+          payload
+          // { withCredentials: true } // ✅ Include credentials if needed
+        );
 
-  //       const token = response?.data?.tokens?.accessToken;
-  //       localStorage.setItem("token", token);
-  //       toast.success(response.data.message);
+        const token = response?.data?.tokens?.accessToken;
+        localStorage.setItem("token", token);
+        console.log("Login Successful :", response.data);
+        toast.success(response.data.message);
 
-  //       setTimeout(() => {
-  //         navigate("/home");
-  //       }, 2000);
-  //     }
-  //   } catch (error) {
-  //     toast.error(error.response?.data?.message || "Login failed");
-  //     if (error?.response?.status === 403) {
-  //       navigate("/emailverification");
-  //     }
-  //     console.error("Login failed:", error);
-  //   } finally {
-  //     setIsLoading(false); // Hide loader
-  //   }
-  // };
+        setTimeout(() => {
+          navigate("/signup");
+        }, 2000);
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Login failed");
+      if (error?.response?.status === 403) {
+        navigate("/emailverification");
+      }
+      console.error("Login failed:", error);
+    } finally {
+      setIsLoading(false); // Hide loader
+    }
+  };
 
   return (
     <Box
@@ -217,7 +219,7 @@ const Login = () => {
           <CustomButton
             // icon={<LoginOutlinedIcon />}
             text={"Login"}
-            // onClick={loginHandle}
+            onClick={loginHandle}
           />
         </Box>
 
@@ -240,7 +242,7 @@ const Login = () => {
       </Box>
 
       {/* Toast Notifications */}
-      {/* <ToastContainer
+      <ToastContainer
         position="top-right"
         autoClose={2000}
         hideProgressBar={false}
@@ -251,7 +253,7 @@ const Login = () => {
         draggable
         pauseOnHover
         theme="dark"
-      /> */}
+      />
 
       {/* Full-Screen Loader */}
       {isLoading && (
