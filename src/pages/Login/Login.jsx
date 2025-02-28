@@ -16,15 +16,15 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [validate, setValidate] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isBuyer, setIsBuyer] = useState(true);
-  console.log("🚀 ~ Login ~ isBuyer:", isBuyer);
+  // const [isBuyer, setIsBuyer] = useState(true);
+  // console.log("🚀 ~ Login ~ isBuyer:", isBuyer);
+  // const handleToggle = () => {
+  //   setIsBuyer((prev) => !prev);
+  //   isBuyer ? navigate("/seller_login") : navigate("/");
+  // };
 
   const navigate = useNavigate();
 
-  const handleToggle = () => {
-    setIsBuyer((prev) => !prev);
-    isBuyer ? navigate("/seller_login") : navigate("/");
-  };
 
   const validateInputs = () => {
     if (!login || !password) {
@@ -133,9 +133,7 @@ const Login = () => {
           flexDirection: "column",
         }}
       >
-        <Box sx={{ marginBottom: "10px" }}>
-          <SlideButton checked={!isBuyer} onchange={handleToggle} />
-        </Box>
+        
 
         <h1 style={{ color: "white", marginBottom: "10px" }}>
           Login to your buyer account

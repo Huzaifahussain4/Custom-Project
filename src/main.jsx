@@ -8,7 +8,13 @@ import {
   Route,
 } from "react-router";
 import { RouterProvider } from "react-router-dom";
-import { Forgotpassword, Login, SellerLogin, Signup } from "./pages/index.js";
+import {
+  Forgotpassword,
+  Login,
+  SellerLogin,
+  SellerSignup,
+  Signup,
+} from "./pages/index.js";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import darkBlueTheme from "./utils/theme.jsx";
 
@@ -19,6 +25,7 @@ const route = createBrowserRouter(
         <Route path="" element={<Login />} />
         <Route path="seller_login" element={<SellerLogin />} />
         <Route path="signup" element={<Signup />} />
+        <Route path="seller_signup" element={<SellerSignup />} />
         <Route path="forgot_password" element={<Forgotpassword />} />
       </Route>
     </>

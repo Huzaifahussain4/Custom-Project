@@ -150,14 +150,15 @@ const SellerLogin = () => {
             display: "flex",
             width: { md: "55%", sm: "84%", xs: "84%" },
             marginBottom: "10px",
+            height: "49px",
           }}
         >
-          <Box sx={{ width: "50%", marginRight: "10px" }}>
+          {/* <Box sx={{ width: "50%", marginRight: "10px" }}>
             <CustomButton icon={<GoogleIcon />} text={"Google"} />
           </Box>
           <Box sx={{ width: "50%" }}>
             <CustomButton icon={<FacebookOutlinedIcon />} text={"Facebook"} />
-          </Box>
+          </Box> */}
         </Box>
 
         {/* Input Fields */}

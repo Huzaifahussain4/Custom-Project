@@ -26,7 +26,7 @@ const Signup = () => {
   // const [validate, setValidate] = useState("");
   const [emailBtn, setEmailBtn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isBuyer, setIsBuyer] = useState(true);
+  const [isBuyer, setIsBuyer] = useState(false);
   console.log("🚀 ~ Signup ~ isBuyer:", isBuyer);
   const handleToggle = () => {
     setIsBuyer((prev) => !prev);
@@ -156,7 +156,7 @@ const Signup = () => {
               marginBottom: "5px",
             }}
           >
-            Create Your buyer account
+            Create Your seller account
           </h1>
           <p
             style={{
