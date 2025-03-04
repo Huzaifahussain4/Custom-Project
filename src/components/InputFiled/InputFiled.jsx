@@ -2,12 +2,13 @@ import { Search } from "@mui/icons-material";
 import { IconButton, Paper } from "@mui/material";
 import React, { useState } from "react";
 // import PhoneInput from "react-phone-input-2";
-// import "react-phone-input-2/lib/style.css";
 import "../InputFiled/style.css";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import EditIcon from "@mui/icons-material/Edit";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
-export function InputFiled({ typeValue, placeholderValue, onChange }) {
+export function InputFiled({ typeValue, placeholderValue, onChange, value }) {
   return (
     <Paper
       component="form"
@@ -27,6 +28,7 @@ export function InputFiled({ typeValue, placeholderValue, onChange }) {
         type={typeValue}
         placeholder={placeholderValue}
         className="customFieldSearchBar"
+        value={value}
         style={{
           // outline: "none",
           border: "none",
@@ -43,56 +45,57 @@ export function InputFiled({ typeValue, placeholderValue, onChange }) {
   );
 }
 
-// export function PhoneNumberField({ typeValue, placeholderValue, onChange }) {
-//   const [phone, setPhone] = useState("");
-//   console.log("🚀 ~ PhoneNumberField ~ phone:", phone);
-//   const [countryCode, setCountryCode] = useState("us");
-//   console.log("🚀 ~ PhoneNumberField ~ countryCode:", countryCode);
+export function PhoneNumberField({
+  value,
+  placeholderValue,
+  onchange,
+  countryCode,
+}) {
+  // console.log("🚀 ~ PhoneNumberField ~ phone:", phone);
+  // console.log("🚀 ~ PhoneNumberField ~ countryCode:", countryCode);
 
-//   return (
-//     <Paper
-//       component="form"
-//       sx={{
-//         borderRadius: 3,
-//         border: "none",
-//         bgcolor: "#1a1a1a",
-//         boxShadow: "none",
-//         width: { md: "100%", sm: "100%", xs: "100%" },
-//         marginTop: 1,
-//         marginBottom: 1,
-//       }}
-//     >
-//       <PhoneInput
-//         country={countryCode} // Set the default country code
-//         value={phone} // Set the phone number value
-//         onChange={(phone, country) => {
-//           setPhone(phone); // Update the phone number state
-//           setCountryCode(country?.countryCode); // Update the country code state if needed
-//           if (onChange) {
-//             onChange(phone); // Call the passed `onChange` prop if provided
-//           }
-//         }}
-//         placeholder={placeholderValue || "Enter phone number"}
-//         inputStyle={{
-//           width: "100%",
-//           backgroundColor: "#1a1a1a",
-//           border: "none",
-//           color: "#fff",
-//           padding: "10px",
-//           borderRadius: "5px",
-//         }}
-//         buttonStyle={{
-//           backgroundColor: "#1a1a1a",
-//           border: "none",
-//         }}
-//         dropdownStyle={{
-//           backgroundColor: "#1a1a1a",
-//           color: "#fff",
-//         }}
-//       />
-//     </Paper>
-//   );
-// }
+  return (
+    <Paper
+      component="form"
+      sx={{
+        borderRadius: 3,
+        border: "none",
+        bgcolor: "#1a1a1a",
+        boxShadow: "none",
+        width: { md: "100%", sm: "100%", xs: "100%" },
+        marginTop: 1,
+        // marginBottom: 1,
+        padding: "0px",
+      }}
+    >
+      <PhoneInput
+        country={countryCode} // Set the default country code
+        value={value} // Set the phone number value
+        onChange={onchange}
+        placeholder={placeholderValue || "Enter phone number"}
+        inputStyle={{
+          width: "100%",
+          backgroundColor: "#1a1a1a",
+          border: "1px solid gray",
+          color: "#fff",
+          padding: "30px",
+          borderRadius: "15px",
+        }}
+        buttonStyle={{
+          backgroundColor: "#1a1a1a",
+          border: "1px solid gray",
+          borderRight: "none",
+          borderRadius: "15px 0px 0px 15px",
+          paddingLeft: "10px",
+        }}
+        dropdownStyle={{
+          backgroundColor: "#1a1a1a",
+          color: "#fff",
+        }}
+      />
+    </Paper>
+  );
+}
 
 export function CustomFiled({ typeValue, placeholderValue, onChange }) {
   return (

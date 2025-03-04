@@ -23,7 +23,7 @@ const route = createBrowserRouter(
     <>
       <Route path="/" element={<App />}>
         <Route path="" element={<Login />} />
-        <Route path="seller_login" element={<SellerLogin />} />
+        {/* <Route path="seller_login" element={<SellerLogin />} /> */}
         <Route path="signup" element={<Signup />} />
         <Route path="seller_signup" element={<SellerSignup />} />
         <Route path="forgot_password" element={<Forgotpassword />} />

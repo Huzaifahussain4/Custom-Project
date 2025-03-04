@@ -361,6 +361,25 @@ const Signup = () => {
               // onClick={loginHandle}
             />
           </Box>
+          <span
+            style={{
+              color: "#fff",
+              marginTop: "30px",
+            }}
+          >
+            Already have an account?
+            <Link
+              to="/"
+              style={{
+                marginLeft: "5px",
+                color: "white",
+                fontWeight: "500",
+                textDecoration: "none",
+              }}
+            >
+              Login
+            </Link>
+          </span>
         </Box>
       )}
 

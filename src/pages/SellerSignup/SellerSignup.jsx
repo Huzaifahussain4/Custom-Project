@@ -1,33 +1,71 @@
-import { Box, CircularProgress } from "@mui/material";
-import React, { useState } from "react";
+import { Box, CircularProgress, Step, StepLabel, Stepper } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import {
   CustomButton,
   InputFiled,
   CustomFiled,
   SlideButton,
+  PhoneNumberField,
 } from "../../components";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
 import { Link, useNavigate } from "react-router-dom";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { EmailOutlined, EmailRounded } from "@mui/icons-material";
 
-const Signup = () => {
+const SellerSignup = () => {
   const navigate = useNavigate();
 
-  // const [full_name, setFull_name] = useState("");
-  // const [username, setUsername] = useState("");
-  // const [phone_number, setPhoneNumber] = useState();
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [validate, setValidate] = useState("");
+  const [full_name, setFull_name] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone_country_code, setPhone_country_code] = useState(92);
+  const [phone_number, setPhone_number] = useState();
+  const [company_name, setCompany_name] = useState("");
+  const [country, setCountry] = useState("");
+  const [company_website, setCompany_website] = useState("");
+  const [password, setPassword] = useState("");
+  const [again_password, setAgain_password] = useState("");
+  const [confirm_password, setConfirm_password] = useState("");
   const [emailBtn, setEmailBtn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [validate, setValidate] = useState("");
   const [isBuyer, setIsBuyer] = useState(false);
-  console.log("🚀 ~ Signup ~ isBuyer:", isBuyer);
+  const [stepCount, setStepCount] = useState(0);
+  const [phone, setPhone] = useState("");
+
+  const [countryCode, setCountryCode] = useState("us");
+  // console.log("🚀 ~ Signup ~ isBuyer:", isBuyer);
+
+  const handleStepCount = () => {
+    if (stepCount === 3) return;
+    if (stepCount === 0) {
+      if (full_name && phone_number && email) {
+        setStepCount((prev) => prev + 1);
+        console.log("🚀 ~ Signup ~ stepCount:", stepCount);
+      } else {
+        toast.error("All fields are required");
+      }
+    } else if (stepCount === 1) {
+      if (company_name && country && company_website) {
+        setStepCount((prev) => prev + 1);
+        console.log("🚀 ~ Signup ~ stepCount:", stepCount);
+      } else {
+        toast.error("All fields are required");
+      }
+    }
+  };
+  useEffect(() => {
+    console.log("🚀 ~ Updated stepCount:", stepCount);
+  }, [stepCount]);
+
+  const handleStepBack = () => {
+    if (stepCount === 0) return;
+    setStepCount((prev) => prev - 1);
+  };
+
   const handleToggle = () => {
     setIsBuyer((prev) => !prev);
     console.log("🚀 ~ Signup ~ isBuyer: handle", isBuyer);
@@ -38,53 +76,67 @@ const Signup = () => {
     setEmailBtn((prev) => !prev);
   };
 
-  // const validateInputs = () => {
-  //   if (!full_name || !username || !phone_number || !email || !password) {
-  //     setValidate("All fields are required");
-  //     toast.error("All fields are required");
-  //     return false;
-  //   }
+  const validateInputs = () => {
+    if (!password || !confirm_password) {
+      toast.error("All fields are required");
+      return false;
+    }
 
-  //   return true;
-  // };
+    if (password !== confirm_password || password !== again_password) {
+      toast.error("Passwords do not match");
+      return false;
+    }
 
-  // const handleSignUp = async (e) => {
-  //   e.preventDefault();
+    return true;
+  };
 
-  //   const payload = {
-  //     full_name,
-  //     username,
-  //     phone_number,
-  //     email,
-  //     password,
-  //   };
+  const handleSignUp = async (e) => {
+    // e.preventDefault();
 
-  //   try {
-  //     if (validateInputs()) {
-  //       setIsLoading(true);
-  //       const response = await axios.post(
-  //         `${import.meta.env.VITE_API_URL}/api/signup_seller/`,
-  //         payload
-  //       );
-  //       const id = response?.data?._id;
-  //       console.log("🚀 ~ signUpHandle ~ id:", id);
-  //       localStorage.setItem("id", id);
-  //       toast.success(response.data.message);
-  //       setTimeout(() => {
-  //         navigate("/emailverification");
-  //       }, 2000);
-  //     }
-  //   } catch (error) {
-  //     toast.error(error.response.data.message);
-  //     if (error.response) {
-  //       console.error("Sign up failed with response:", error.response.data);
-  //     } else {
-  //       console.error("Sign up failed:", error.message);
-  //     }
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
+    const payload = {
+      full_name,
+      phone_country_code,
+      phone_number,
+      email,
+      password,
+      confirm_password,
+      company_name,
+      country,
+      company_website,
+    };
+
+    try {
+      if (validateInputs()) {
+        setIsLoading(true);
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_URL}/api/signup_seller/`,
+          payload
+        );
+        const uniqueToken = response?.data?.unique_token;
+        console.log("🚀 ~ signUpHandle ~ token:", response);
+        localStorage.setItem("Token", uniqueToken);
+        toast.success(response.data.message);
+        setTimeout(() => {
+          // navigate("/emailverification");
+        }, 2000);
+      }
+    } catch (error) {
+      toast.error(error.response.data.error);
+      if (error.response) {
+        console.error("Sign up failed with response:", error.response.data);
+      } else {
+        console.error("Sign up failed:", error.message);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const steps = [
+    "General Info",
+    "Company Registration",
+    "Password Confirmation",
+  ];
 
   return (
     <Box
@@ -236,15 +288,51 @@ const Signup = () => {
           >
             Create Your Account
           </h1>
-          <p
+          {stepCount === 0 ? (
+            <p
+              style={{
+                color: "white",
+                marginBottom: "30px",
+              }}
+            >
+              General Information
+            </p>
+          ) : stepCount === 1 ? (
+            <p
+              style={{
+                color: "white",
+                marginBottom: "30px",
+              }}
+            >
+              Business Information
+            </p>
+          ) : stepCount === 2 ? (
+            <p
+              style={{
+                color: "white",
+                marginBottom: "30px",
+              }}
+            >
+              Password Verification
+            </p>
+          ) : null}
+
+          {/* <p
             style={{
               color: "white",
               marginBottom: "15px",
             }}
           >
             Chose your signup method
-          </p>
+          </p> */}
 
+          <Stepper activeStep={stepCount} alternativeLabel>
+            {steps.map((label) => (
+              <Step key={label}>
+                <StepLabel>{label}</StepLabel>
+              </Step>
+            ))}
+          </Stepper>
           <Box
             sx={{
               width: { md: "55%", sm: "85%", xs: "85%" },
@@ -253,98 +341,195 @@ const Signup = () => {
               justifyContent: "center",
               // marginTop: "20px",
             }}
-          >
-            <Box sx={{ width: " 100%", marginRight: "10px" }}>
-              <label
-                style={{
-                  color: "white",
-                  width: "100%",
-                  marginTop: "40px",
-                  fontWeight: "300",
-                }}
-              >
-                Full Name
-              </label>
-              <CustomFiled
-                typeValue={"text"}
-                placeholderValue={"Enter your Full Name"}
-                onChange={(e) => setFull_name(e.target.value)}
-              />
-            </Box>
-            <Box sx={{ width: " 100%" }}>
-              <label
-                style={{
-                  color: "white",
-                  width: "50%",
-                  marginTop: "10px",
-                  fontWeight: "300",
-                }}
-              >
-                User Name
-              </label>
-              <CustomFiled
-                typeValue={"text"}
-                placeholderValue={"Enter valid User name"}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </Box>
-          </Box>
+          ></Box>
           <Box
             sx={{
               width: { md: "55%}", sm: "85%", xs: "85%" },
             }}
           >
-            <Box sx={{ marginTop: "10px" }}>
-              <label
-                style={{
-                  color: "white",
-                  width: "50%",
-                  marginTop: "10px",
-                  fontWeight: "300",
-                }}
-              >
-                Phone Number
-              </label>
-              <InputFiled
-                typeValue={"number"}
-                placeholderValue={"Enter valid number"}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-              />
-            </Box>
-            <Box sx={{ marginTop: "10px" }}>
-              <label
-                style={{
-                  color: "white",
-                  width: "50%",
-                  marginTop: "10px",
-                  fontWeight: "300",
-                }}
-              >
-                Email
-              </label>
-              <InputFiled
-                typeValue={"email"}
-                placeholderValue={"Enter your Email"}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </Box>
-            <Box sx={{ marginTop: "10px" }}>
-              <label
-                style={{
-                  color: "white",
-                  width: "50%",
-                  marginTop: "10px",
-                  fontWeight: "300",
-                }}
-              >
-                Password
-              </label>
-              <InputFiled
-                typeValue={"password"}
-                placeholderValue={"Enter your Password"}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Box>
+            {stepCount === 0 ? (
+              <>
+                <Box sx={{ marginTop: "10px" }}>
+                  <label
+                    style={{
+                      color: "white",
+                      width: "50%",
+                      marginTop: "10px",
+                      fontWeight: "300",
+                    }}
+                  >
+                    Full Name
+                  </label>
+                  <InputFiled
+                    typeValue={"text"}
+                    placeholderValue={"Enter full name"}
+                    onChange={(e) => setFull_name(e.target.value)}
+                    value={full_name}
+                  />
+                </Box>
+                <Box sx={{ marginTop: "10px" }}>
+                  <label
+                    style={{
+                      color: "white",
+                      width: "50%",
+                      marginTop: "10px",
+                      fontWeight: "300",
+                    }}
+                  >
+                    Email
+                  </label>
+                  <InputFiled
+                    typeValue={"email"}
+                    placeholderValue={"Enter your Email"}
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                  />
+                </Box>
+                <Box sx={{ marginTop: "10px" }}>
+                  <label
+                    style={{
+                      color: "white",
+                      width: "50%",
+                      marginTop: "10px",
+                      fontWeight: "300",
+                    }}
+                  >
+                    Phone Number
+                  </label>
+                  {/* <InputFiled
+                    typeValue={"number"}
+                    placeholderValue={"Enter your Password"}
+                    onChange={(e) => setPhone_number(e.target.value)}
+                    value={phone_number}
+                  /> */}
+                  <PhoneNumberField
+                    onchange={(phone, country) => {
+                      setPhone(phone); // Update the phone number state
+                      setCountryCode(country?.countryCode); // Update the country code state if needed
+                      if (onchange) {
+                        onChange(phone); // Call the passed `onChange` prop if provided
+                      }
+                    }}
+                    value={phone}
+                    countryCode={countryCode}
+                  />
+                </Box>
+              </>
+            ) : stepCount === 1 ? (
+              <>
+                <Box sx={{ marginTop: "10px" }}>
+                  <label
+                    style={{
+                      color: "white",
+                      width: "50%",
+                      marginTop: "10px",
+                      fontWeight: "300",
+                    }}
+                  >
+                    Country
+                  </label>
+                  <InputFiled
+                    typeValue={"text"}
+                    placeholderValue={"Enter full name"}
+                    onChange={(e) => setCountry(e.target.value)}
+                    value={country}
+                  />
+                </Box>
+                <Box sx={{ marginTop: "10px" }}>
+                  <label
+                    style={{
+                      color: "white",
+                      width: "50%",
+                      marginTop: "10px",
+                      fontWeight: "300",
+                    }}
+                  >
+                    Company Name
+                  </label>
+                  <InputFiled
+                    typeValue={"text"}
+                    placeholderValue={"Enter your Email"}
+                    onChange={(e) => setCompany_name(e.target.value)}
+                    value={company_name}
+                  />
+                </Box>
+                <Box sx={{ marginTop: "10px" }}>
+                  <label
+                    style={{
+                      color: "white",
+                      width: "50%",
+                      marginTop: "10px",
+                      fontWeight: "300",
+                    }}
+                  >
+                    Company Website
+                  </label>
+                  <InputFiled
+                    typeValue={"text"}
+                    placeholderValue={"Enter your Company Website"}
+                    onChange={(e) => setCompany_website(e.target.value)}
+                    value={company_website}
+                  />
+                </Box>
+              </>
+            ) : stepCount === 2 ? (
+              <>
+                <Box sx={{ marginTop: "10px" }}>
+                  <label
+                    style={{
+                      color: "white",
+                      width: "50%",
+                      marginTop: "10px",
+                      fontWeight: "300",
+                    }}
+                  >
+                    Password
+                  </label>
+                  <InputFiled
+                    typeValue={"password"}
+                    placeholderValue={"Enter full name"}
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                  />
+                </Box>
+                <Box sx={{ marginTop: "10px" }}>
+                  <label
+                    style={{
+                      color: "white",
+                      width: "50%",
+                      marginTop: "10px",
+                      fontWeight: "300",
+                    }}
+                  >
+                    Again Password
+                  </label>
+                  <InputFiled
+                    typeValue={"password"}
+                    placeholderValue={"Enter your Email"}
+                    onChange={(e) => setAgain_password(e.target.value)}
+                    value={again_password}
+                  />
+                </Box>
+                <Box sx={{ marginTop: "10px" }}>
+                  <label
+                    style={{
+                      color: "white",
+                      width: "50%",
+                      marginTop: "10px",
+                      fontWeight: "300",
+                    }}
+                  >
+                    Confirm Password
+                  </label>
+                  <InputFiled
+                    typeValue={"password"}
+                    placeholderValue={"Enter your Email"}
+                    onChange={(e) => setConfirm_password(e.target.value)}
+                    value={confirm_password}
+                  />
+                </Box>
+              </>
+            ) : null}
           </Box>
           <Box
             sx={{
@@ -355,16 +540,49 @@ const Signup = () => {
               marginTop: "20px",
             }}
           >
-            <CustomButton
-              // icon={<LoginOutlinedIcon />}
-              text={"Signup"}
-              // onClick={loginHandle}
-            />
+            {stepCount === 0 ? (
+              <Box sx={{ width: "50%", marginRight: "10px" }}>
+                <CustomButton
+                  // icon={<LoginOutlinedIcon />}
+                  text={"Back"}
+                  onClick={handleStepBack}
+                  disabled
+                />
+              </Box>
+            ) : (
+              <Box sx={{ width: "50%", marginRight: "10px" }}>
+                <CustomButton
+                  // icon={<LoginOutlinedIcon />}
+                  text={"Back"}
+                  onClick={handleStepBack}
+                />
+              </Box>
+            )}
+            {stepCount === 2 ? (
+              <Box sx={{ width: "50%", marginLeft: "10px" }}>
+                <CustomButton
+                  text={"Signup"}
+                  onClick={() => {
+                    if (validateInputs()) {
+                      handleSignUp();
+                    }
+                  }}
+                />
+              </Box>
+            ) : (
+              <Box sx={{ width: "50%", marginLeft: "10px" }}>
+                <CustomButton
+                  // icon={<LoginOutlinedIcon />}
+                  text={"Continue"}
+                  onClick={handleStepCount}
+                />
+              </Box>
+            )}
           </Box>
         </Box>
       )}
 
-      {/* <ToastContainer
+      <ToastContainer
         position="top-right"
         autoClose={2000}
         hideProgressBar={false}
@@ -376,7 +594,7 @@ const Signup = () => {
         pauseOnHover
         theme="dark"
         transition:slide
-      /> */}
+      />
 
       {isLoading && (
         <Box
@@ -399,5 +617,4 @@ const Signup = () => {
     </Box>
   );
 };
-
-export default Signup;
+export default SellerSignup;
