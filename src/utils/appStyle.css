@@ -116,3 +116,65 @@
 .switch>input:checked~span:last-of-type {
     opacity: 1;
 }
+
+.selected-flag {
+    transition: 0.3s ease-in-out;
+}
+
+.selected-flag:hover {
+    background-color: #757575 !important;
+    /* padding-left: 10px; */
+    border-radius: 15px 0px 0px 15px;
+}
+
+.selected-flag.open {
+    border-radius: 15px 0px 0px 15px !important;
+    background-color: #353535 !important;
+}
+
+.selected-flag {
+    background-color: transparent !important;
+
+}
+
+li.country.highlight {
+    background-color: #353535 !important;
+}
+
+li.country:hover {
+    background-color: #454545 !important;
+    color: white !important;
+}
+
+
+/* For Webkit Browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 8px;
+    /* Width of the scrollbar */
+    height: 8px;
+    /* Height for horizontal scroll */
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    /* Track (scrollbar background) */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555;
+    /* Scrollbar handle */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #777;
+    /* Handle on hover */
+}
+
+.MuiStepIcon-root.Mui-active {
+    color: rgba(145,18,190,1) !important; /* Change to blue */
+}
+.MuiStepIcon-root.Mui-completed {
+    color: rgba(145,18,190,1) !important; /* Change to blue */
+}

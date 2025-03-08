@@ -7,6 +7,7 @@ import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import EditIcon from "@mui/icons-material/Edit";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import "../../utils/appStyle.css";
 
 export function InputFiled({ typeValue, placeholderValue, onChange, value }) {
   return (
@@ -48,12 +49,9 @@ export function InputFiled({ typeValue, placeholderValue, onChange, value }) {
 export function PhoneNumberField({
   value,
   placeholderValue,
-  onchange,
+  onChange,
   countryCode,
 }) {
-  // console.log("🚀 ~ PhoneNumberField ~ phone:", phone);
-  // console.log("🚀 ~ PhoneNumberField ~ countryCode:", countryCode);
-
   return (
     <Paper
       component="form"
@@ -62,16 +60,22 @@ export function PhoneNumberField({
         border: "none",
         bgcolor: "#1a1a1a",
         boxShadow: "none",
-        width: { md: "100%", sm: "100%", xs: "100%" },
+        width: "100%",
         marginTop: 1,
-        // marginBottom: 1,
         padding: "0px",
       }}
     >
       <PhoneInput
         country={countryCode} // Set the default country code
         value={value} // Set the phone number value
-        onChange={onchange}
+        onChange={(phone_number, country) => {
+          console.log("Phone Number:", phone_number);
+          console.log("Country:", country); // Debugging
+
+          if (typeof onChange === "function") {
+            onChange(phone_number, country);
+          }
+        }}
         placeholder={placeholderValue || "Enter phone number"}
         inputStyle={{
           width: "100%",
@@ -79,16 +83,17 @@ export function PhoneNumberField({
           border: "1px solid gray",
           color: "#fff",
           padding: "30px",
+          paddingLeft: "55px",
           borderRadius: "15px",
         }}
         buttonStyle={{
-          backgroundColor: "#1a1a1a",
+          backgroundColor: "transparent",
           border: "1px solid gray",
           borderRight: "none",
           borderRadius: "15px 0px 0px 15px",
-          paddingLeft: "10px",
         }}
         dropdownStyle={{
+          height: "100px",
           backgroundColor: "#1a1a1a",
           color: "#fff",
         }}
@@ -96,6 +101,7 @@ export function PhoneNumberField({
     </Paper>
   );
 }
+
 
 export function CustomFiled({ typeValue, placeholderValue, onChange }) {
   return (

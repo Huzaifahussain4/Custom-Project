@@ -20,9 +20,11 @@ const SellerSignup = () => {
   const navigate = useNavigate();
 
   const [full_name, setFull_name] = useState("");
+  console.log("🚀 ~ SellerSignup ~ full_name:", full_name);
   const [email, setEmail] = useState("");
-  const [phone_country_code, setPhone_country_code] = useState(92);
+  console.log("🚀 ~ SellerSignup ~ email:", email);
   const [phone_number, setPhone_number] = useState();
+  console.log("🚀 ~ SellerSignup ~ phone_number:", phone_number);
   const [company_name, setCompany_name] = useState("");
   const [country, setCountry] = useState("");
   const [company_website, setCompany_website] = useState("");
@@ -34,10 +36,8 @@ const SellerSignup = () => {
   const [validate, setValidate] = useState("");
   const [isBuyer, setIsBuyer] = useState(false);
   const [stepCount, setStepCount] = useState(0);
-  const [phone, setPhone] = useState("");
-
-  const [countryCode, setCountryCode] = useState("us");
-  // console.log("🚀 ~ Signup ~ isBuyer:", isBuyer);
+  const [phone_country_code, setPhone_country_code] = useState("us");
+  console.log("🚀 ~ SellerSignup ~ phone_country_code:", phone_country_code);
 
   const handleStepCount = () => {
     if (stepCount === 3) return;
@@ -117,7 +117,7 @@ const SellerSignup = () => {
         localStorage.setItem("Token", uniqueToken);
         toast.success(response.data.message);
         setTimeout(() => {
-          // navigate("/emailverification");
+          navigate("/");
         }, 2000);
       }
     } catch (error) {
@@ -385,7 +385,7 @@ const SellerSignup = () => {
                     value={email}
                   />
                 </Box>
-                <Box sx={{ marginTop: "10px" }}>
+                 <Box sx={{ marginTop: "10px" }}>
                   <label
                     style={{
                       color: "white",
@@ -403,15 +403,19 @@ const SellerSignup = () => {
                     value={phone_number}
                   /> */}
                   <PhoneNumberField
-                    onchange={(phone, country) => {
-                      setPhone(phone); // Update the phone number state
-                      setCountryCode(country?.countryCode); // Update the country code state if needed
-                      if (onchange) {
-                        onChange(phone); // Call the passed `onChange` prop if provided
+                    onChange={(phone_number, country) => {
+                      console.log("Country object:", country); // Debugging
+                      setPhone_number(phone_number);
+
+                      // Ensure country exists before accessing its properties
+                      setPhone_country_code(country?.dialCode || ""); // Updated: Use `dialCode` if `phone_country_code` is not available
+
+                      if (typeof onChange === "function") {
+                        onChange(phone_number);
                       }
                     }}
-                    value={phone}
-                    countryCode={countryCode}
+                    value={phone_number}
+                    countryCode={phone_country_code}
                   />
                 </Box>
               </>

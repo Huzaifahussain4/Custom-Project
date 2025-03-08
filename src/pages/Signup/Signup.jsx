@@ -5,32 +5,33 @@ import {
   InputFiled,
   CustomFiled,
   SlideButton,
+  PhoneNumberField,
 } from "../../components";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
 import { Link, useNavigate } from "react-router-dom";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { EmailOutlined, EmailRounded } from "@mui/icons-material";
 
 const Signup = () => {
   const navigate = useNavigate();
 
-  // const [full_name, setFull_name] = useState("");
+  const [full_name, setFull_name] = useState("");
   // const [username, setUsername] = useState("");
   // const [phone_number, setPhoneNumber] = useState();
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [validate, setValidate] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [validate, setValidate] = useState("");
+  const [phone_country_code, setPhone_country_code] = useState("us");
+  const [phone_number, setPhone_number] = useState();
   const [emailBtn, setEmailBtn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isBuyer, setIsBuyer] = useState(true);
-  console.log("🚀 ~ Signup ~ isBuyer:", isBuyer);
   const handleToggle = () => {
     setIsBuyer((prev) => !prev);
-    console.log("🚀 ~ Signup ~ isBuyer: handle", isBuyer);
     isBuyer ? navigate("/seller_signup") : navigate("/signup");
   };
 
@@ -38,53 +39,58 @@ const Signup = () => {
     setEmailBtn((prev) => !prev);
   };
 
-  // const validateInputs = () => {
-  //   if (!full_name || !username || !phone_number || !email || !password) {
-  //     setValidate("All fields are required");
-  //     toast.error("All fields are required");
-  //     return false;
-  //   }
+  const validateInputs = () => {
+    if (!full_name || !phone_number || !email || !password) {
+      setValidate("All fields are required");
+      toast.error("All fields are required");
+      return false;
+    }
 
-  //   return true;
-  // };
+    return true;
+  };
 
-  // const handleSignUp = async (e) => {
-  //   e.preventDefault();
+  const handleSignUp = async (e) => {
+    e.preventDefault();
 
-  //   const payload = {
-  //     full_name,
-  //     username,
-  //     phone_number,
-  //     email,
-  //     password,
-  //   };
+    const payload = {
+      full_name,
+      phone_country_code,
+      phone_number,
+      email,
+      password,
+    };
 
-  //   try {
-  //     if (validateInputs()) {
-  //       setIsLoading(true);
-  //       const response = await axios.post(
-  //         `${import.meta.env.VITE_API_URL}/api/signup_seller/`,
-  //         payload
-  //       );
-  //       const id = response?.data?._id;
-  //       console.log("🚀 ~ signUpHandle ~ id:", id);
-  //       localStorage.setItem("id", id);
-  //       toast.success(response.data.message);
-  //       setTimeout(() => {
-  //         navigate("/emailverification");
-  //       }, 2000);
-  //     }
-  //   } catch (error) {
-  //     toast.error(error.response.data.message);
-  //     if (error.response) {
-  //       console.error("Sign up failed with response:", error.response.data);
-  //     } else {
-  //       console.error("Sign up failed:", error.message);
-  //     }
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
+    try {
+      if (validateInputs()) {
+        setIsLoading(true);
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_URL}/api/signup_buyer/`,
+          payload
+        );
+        console.log("🚀 ~ handleSignUp ~ response:", response);
+        const id = response?.data?.buyer_id;
+        console.log("🚀 ~ signUpHandle ~ id:", id);
+        const token = response?.data?.unique_token;
+        console.log("🚀 ~ handleSignUp ~ token:", token);
+        localStorage.setItem("Tokken", token);
+        localStorage.setItem("id", id);
+        toast.success(response.data.message);
+        // setTimeout(() => {
+        //   navigate("/emailverification");
+        // }, 2000);
+      }
+    } catch (error) {
+      console.log("🚀 ~ handleSignUp ~ error:", error);
+      toast.error(error.response.data.error);
+      if (error.response) {
+        console.error("Sign up failed with response:", error.response.message);
+      } else {
+        console.error("Sign up failed:", error);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <Box
@@ -236,16 +242,16 @@ const Signup = () => {
           >
             Create Your Account
           </h1>
-          <p
+          {/* <p
             style={{
               color: "white",
               marginBottom: "15px",
             }}
           >
             Chose your signup method
-          </p>
+          </p> */}
 
-          <Box
+          {/* <Box
             sx={{
               width: { md: "55%", sm: "85%", xs: "85%" },
               display: "flex",
@@ -288,7 +294,8 @@ const Signup = () => {
                 onChange={(e) => setUsername(e.target.value)}
               />
             </Box>
-          </Box>
+          </Box> */}
+
           <Box
             sx={{
               width: { md: "55%}", sm: "85%", xs: "85%" },
@@ -303,12 +310,45 @@ const Signup = () => {
                   fontWeight: "300",
                 }}
               >
-                Phone Number
+                Full name
               </label>
               <InputFiled
-                typeValue={"number"}
-                placeholderValue={"Enter valid number"}
-                onChange={(e) => setPhoneNumber(e.target.value)}
+                typeValue={"text"}
+                placeholderValue={"Enter your full name"}
+                onChange={(e) => setFull_name(e.target.value)}
+              />
+            </Box>
+            <Box sx={{ marginTop: "10px" }}>
+              <label
+                style={{
+                  color: "white",
+                  width: "50%",
+                  marginTop: "10px",
+                  fontWeight: "300",
+                }}
+              >
+                Phone Number
+              </label>
+              {/* <InputFiled
+                                typeValue={"number"}
+                                placeholderValue={"Enter your Password"}
+                                onChange={(e) => setPhone_number(e.target.value)}
+                                value={phone_number}
+                              /> */}
+              <PhoneNumberField
+                onChange={(phone_number, country) => {
+                  console.log("Country object:", country); // Debugging
+                  setPhone_number(phone_number);
+
+                  // Ensure country exists before accessing its properties
+                  setPhone_country_code(country?.dialCode || ""); // Updated: Use `dialCode` if `phone_country_code` is not available
+
+                  if (typeof onChange === "function") {
+                    onChange(phone_number);
+                  }
+                }}
+                value={phone_number}
+                countryCode={phone_country_code}
               />
             </Box>
             <Box sx={{ marginTop: "10px" }}>
@@ -356,9 +396,9 @@ const Signup = () => {
             }}
           >
             <CustomButton
-              // icon={<LoginOutlinedIcon />}
+              icon={<LoginOutlinedIcon />}
               text={"Signup"}
-              // onClick={loginHandle}
+              onClick={handleSignUp}
             />
           </Box>
           <span
@@ -383,7 +423,7 @@ const Signup = () => {
         </Box>
       )}
 
-      {/* <ToastContainer
+      <ToastContainer
         position="top-right"
         autoClose={2000}
         hideProgressBar={false}
@@ -395,7 +435,7 @@ const Signup = () => {
         pauseOnHover
         theme="dark"
         transition:slide
-      /> */}
+      />
 
       {isLoading && (
         <Box
