@@ -9,7 +9,7 @@ const theme = createTheme({
     error: { main: colors.error },
     warning: { main: colors.warning },
     info: { main: colors.info },
-    background: { default: colors.background },
+    background: { default: colors.background, light: colors.background_light },
     hover: { main: colors.hover },
     text: { primary: colors.textPrimary, secondary: colors.textSecondary },
   },

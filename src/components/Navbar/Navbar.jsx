@@ -9,15 +9,25 @@ import {
   Button,
   Box,
   Container,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemButton,
+  ListItemText,
+  Divider,
+  Drawer,
 } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import theme from "../../utils/theme";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
-import { WidthFull } from "@mui/icons-material";
+import { Margin, Padding, WidthFull } from "@mui/icons-material";
 import shadows from "@mui/material/styles/shadows";
 import { CustomButton } from "../CustomButton/CustomButton";
 import { useNavigate } from "react-router";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import MailIcon from "@mui/icons-material/Mail";
+import MenuIcon from "@mui/icons-material/Menu";
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -50,84 +60,156 @@ export const Navbar = () => {
   const token = localStorage.getItem("Token");
   console.log("🚀 ~ Navbar ~ token:", token);
 
-  return (
-    <AppBar
-      position="static"
-      sx={{ backgroundColor: theme.palette.background.default }}
-      elevation={0}
-    >
-      <Container sx={{ width: { md: "80%", sm: "60%", xs: "50%" } }}>
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          {/* Left-aligned Logo */}
-          <Typography
-            variant="h6"
-            sx={{ fontWeight: "bold", color: theme.palette.primary.main }}
-          >
-            LOGO
-          </Typography>
-          {/* Center-aligned Dropdown Buttons */}
-          <Box sx={{ display: "flex", gap: 2 }}>
-            <Button
-              color="inherit"
-              endIcon={<KeyboardArrowDownOutlinedIcon />}
-              onClick={handleMenuClick}
-              sx={{ color: theme.palette.primary.main }}
-            >
-              Features
-            </Button>
-            <Button
-              color="inherit"
-              endIcon={<KeyboardArrowDownOutlinedIcon />}
-              onClick={handleMenuClick}
-              sx={{ color: theme.palette.primary.main }}
-            >
-              Services
-            </Button>
-            <Button color="inherit" sx={{ color: theme.palette.primary.main }}>
-              Contact
-            </Button>
-          </Box>
+  const [open, setOpen] = React.useState(false);
 
-          {/* Dropdown Menu for Features */}
-          <Menu
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={handleMenuClose}
+  const toggleDrawer = (newOpen) => () => {
+    setOpen(newOpen);
+  };
+
+  const DrawerList = (
+    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+      <List>
+        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {["All mail", "Trash", "Spam"].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+
+  return (
+    // <AppBar
+    //   position="static"
+    //   sx={{ backgroundColor: theme.palette.background.default, width: "100%", padding: "0px" }}
+    //   elevation={0}
+    // >
+    <Container
+      maxWidth={false}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        // width: { md: "100%", sm: "100%", xs: "100%" },
+        width: "100%",
+
+        // padding: "0px",
+        // margin: "0px",
+        // maxwidth: "none",
+      }}
+    >
+      <Toolbar
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          width: { md: "90%", sm: "100%", xs: "100%" },
+          padding: "0px",
+          margin: "0px",
+        }}
+      >
+        <Box sx={{ display: { sm: "none", xs: "flex" }, gap: 2 }}>
+          <IconButton onClick={toggleDrawer(true)}>
+            <MenuIcon />
+          </IconButton>
+          <Drawer open={open} onClose={toggleDrawer(false)}>
+            {DrawerList}
+          </Drawer>
+        </Box>
+
+        {/* Left-aligned Logo */}
+        <Typography
+          variant="h6"
+          sx={{ fontWeight: "bold", color: theme.palette.primary.main }}
+        >
+          LOGO
+        </Typography>
+        {/* Center-aligned Dropdown Buttons */}
+        <Box sx={{ display: { sm: "flex", xs: "none" }, gap: 2 }}>
+          <Button
+            color="inherit"
+            endIcon={<KeyboardArrowDownOutlinedIcon />}
+            onClick={handleMenuClick}
+            sx={{ color: theme.palette.primary.main }}
           >
-            <MenuItem onClick={handleMenuClose}>Feature 1</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Feature 2</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Feature 3</MenuItem>
-          </Menu>
-          {/* Profile Dropdown */}
-          {token ? (
-            <>
-              {/* Right-aligned Profile Icon */}
-              <IconButton
-                color="inherit"
-                onClick={handleProfileClick}
-                sx={{ color: theme.palette.primary.main }}
-              >
-                <AccountCircleIcon fontSize="large" />
-              </IconButton>
-              <Menu
-                anchorEl={profileAnchorEl}
-                open={Boolean(profileAnchorEl)}
-                onClose={handleProfileClose}
-              >
-                <MenuItem onClick={handleProfileClose}>
-                  Profile Settings
-                </MenuItem>
-                <MenuItem onClick={handleLogout}>Logout</MenuItem>
-              </Menu>
-            </>
-          ) : (
-            <Box sx={{ display: "flex", gap: 2 }}>
-              <CustomButton text="Login" onClick={() => navigate("/login")} />
-            </Box>
-          )}
-          {/* {!token && <CustomButton text="Login" />} */}
-        </Toolbar>
-      </Container>
-    </AppBar>
+            Features
+          </Button>
+          <Button
+            color="inherit"
+            endIcon={<KeyboardArrowDownOutlinedIcon />}
+            onClick={handleMenuClick}
+            sx={{ color: theme.palette.primary.main }}
+          >
+            Services
+          </Button>
+          <Button color="inherit" sx={{ color: theme.palette.primary.main }}>
+            Contact
+          </Button>
+          <Button color="inherit" sx={{ color: theme.palette.primary.main }}>
+            Contact
+          </Button>
+          <Button color="inherit" sx={{ color: theme.palette.primary.main }}>
+            Contact
+          </Button>
+          <Button color="inherit" sx={{ color: theme.palette.primary.main }}>
+            Contact
+          </Button>
+        </Box>
+
+        {/* Dropdown Menu for Features */}
+        <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={handleMenuClose}
+        >
+          <MenuItem onClick={handleMenuClose}>Feature 1</MenuItem>
+          <MenuItem onClick={handleMenuClose}>Feature 2</MenuItem>
+          <MenuItem onClick={handleMenuClose}>Feature 3</MenuItem>
+        </Menu>
+        {/* Profile Dropdown */}
+        {token ? (
+          <>
+            {/* Right-aligned Profile Icon */}
+            <IconButton
+              color="inherit"
+              onClick={handleProfileClick}
+              sx={{ color: theme.palette.primary.main }}
+            >
+              <AccountCircleIcon fontSize="large" />
+            </IconButton>
+            <Menu
+              anchorEl={profileAnchorEl}
+              open={Boolean(profileAnchorEl)}
+              onClose={handleProfileClose}
+            >
+              <MenuItem onClick={handleProfileClose}>Profile Settings</MenuItem>
+              <MenuItem onClick={handleLogout}>Logout</MenuItem>
+            </Menu>
+          </>
+        ) : (
+          <Box sx={{ display: "flex", gap: 2 }}>
+            <CustomButton text="Login" onClick={() => navigate("/login")} />
+          </Box>
+        )}
+        {/* {!token && <CustomButton text="Login" />} */}
+      </Toolbar>
+    </Container>
+    // </AppBar>
   );
 };

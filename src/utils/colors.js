@@ -6,6 +6,7 @@ const colors = {
   warning: "#ff9800", // Orange
   info: "#2196f3", // Light Blue
   background: "#ffffff",
+  background_light: "#eef6fd",
   hover: "#d4e9f4",
   textPrimary: "#212121",
   textSecondary: "#757575",
