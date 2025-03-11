@@ -15,6 +15,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { EmailOutlined, EmailRounded } from "@mui/icons-material";
+import theme from "../../utils/theme";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -98,7 +99,7 @@ const Signup = () => {
         display: { sm: "flex", xs: "block" },
         height: "100vh",
         background: {
-          sm: "black",
+          sm: theme.palette.background.default,
           xs: "linear-gradient(180deg, rgba(244,213,255,1) 0%, rgba(145,18,190,1) 33%, rgba(11,6,62,1) 70%, rgba(0,0,0,1) 100%)",
         },
       }}
@@ -113,7 +114,7 @@ const Signup = () => {
           background: " rgb(255,255,255)",
           m: 2,
           background:
-            "linear-gradient(180deg, rgba(244,213,255,1) 0%, rgba(145,18,190,1) 33%, rgba(11,6,62,1) 70%, rgba(0,0,0,1) 100%)",
+          "linear-gradient(180deg, rgba(1, 145, 248,1) 0%, rgba(1, 145, 248,1) 33%, rgb(255, 255, 255) 100%)",
           borderRadius: 3,
         }}
       >
@@ -158,7 +159,7 @@ const Signup = () => {
           </Box>
           <h1
             style={{
-              color: "white",
+              color: theme.palette.primary.main,
               marginBottom: "5px",
             }}
           >
@@ -166,7 +167,7 @@ const Signup = () => {
           </h1>
           <p
             style={{
-              color: "white",
+              color: theme.palette.text.primary,
               marginBottom: "30px",
             }}
           >
@@ -205,16 +206,16 @@ const Signup = () => {
           </Box>
           <span
             style={{
-              color: "#fff",
+              color: theme.palette.text.primary,
               marginTop: "30px",
             }}
           >
             Already have an account?
             <Link
-              to="/"
+              to="/login"
               style={{
                 marginLeft: "5px",
-                color: "white",
+                color: theme.palette.text.primary,
                 fontWeight: "500",
                 textDecoration: "none",
               }}
@@ -236,7 +237,7 @@ const Signup = () => {
         >
           <h1
             style={{
-              color: "white",
+              color: theme.palette.primary.main,
               marginBottom: "5px",
             }}
           >
@@ -304,7 +305,7 @@ const Signup = () => {
             <Box sx={{ marginTop: "10px" }}>
               <label
                 style={{
-                  color: "white",
+                  color: theme.palette.text.primary,
                   width: "50%",
                   marginTop: "10px",
                   fontWeight: "300",
@@ -321,7 +322,7 @@ const Signup = () => {
             <Box sx={{ marginTop: "10px" }}>
               <label
                 style={{
-                  color: "white",
+                  color: theme.palette.text.primary,
                   width: "50%",
                   marginTop: "10px",
                   fontWeight: "300",
@@ -354,7 +355,7 @@ const Signup = () => {
             <Box sx={{ marginTop: "10px" }}>
               <label
                 style={{
-                  color: "white",
+                  color: theme.palette.text.primary,
                   width: "50%",
                   marginTop: "10px",
                   fontWeight: "300",
@@ -371,7 +372,7 @@ const Signup = () => {
             <Box sx={{ marginTop: "10px" }}>
               <label
                 style={{
-                  color: "white",
+                  color: theme.palette.text.primary,
                   width: "50%",
                   marginTop: "10px",
                   fontWeight: "300",
@@ -403,16 +404,16 @@ const Signup = () => {
           </Box>
           <span
             style={{
-              color: "#fff",
+              color: theme.palette.text.primary,
               marginTop: "30px",
             }}
           >
             Already have an account?
             <Link
-              to="/"
+              to="/login"
               style={{
                 marginLeft: "5px",
-                color: "white",
+                color: theme.palette.text.primary,
                 fontWeight: "500",
                 textDecoration: "none",
               }}

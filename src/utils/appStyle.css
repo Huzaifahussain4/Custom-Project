@@ -6,12 +6,12 @@
 
 /* From Uiverse.io by cbolson */
 .switch {
-    --_switch-bg-clr: #1a1a1a;
+    --_switch-bg-clr: #D3D3D3;
     --_switch-padding: 4px;
     /* padding around button*/
-    --_slider-bg-clr: rgb(145, 18, 190);
+    --_slider-bg-clr: #0191f8;
     /* slider color unchecked */
-    --_slider-bg-clr-on: rgb(145, 18, 190);
+    --_slider-bg-clr-on: #0191f8;
     --_slider-txt-clr: #ffffff;
     --_label-padding: 7px 20px;
     /* padding around the labels -  this gives the switch it's global width and height */
@@ -20,7 +20,7 @@
             0.41,
             0.8);
     /* easing on toggle switch */
-    color: white;
+    color: #212121;
     width: fit-content;
     display: flex;
     justify-content: center;
@@ -28,6 +28,7 @@
     border-radius: 9999px;
     cursor: pointer;
     display: grid;
+    box-shadow: none;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     position: relative;
     isolation: isolate;
@@ -58,6 +59,7 @@
     position: absolute;
     border-radius: inherit;
     transition: inset 150ms ease-in-out;
+    box-shadow: none !important;
 }
 
 /* switch slider */
@@ -122,14 +124,14 @@
 }
 
 .selected-flag:hover {
-    background-color: #757575 !important;
+    background-color: #d4e9f4 !important;
     /* padding-left: 10px; */
     border-radius: 15px 0px 0px 15px;
 }
 
 .selected-flag.open {
     border-radius: 15px 0px 0px 15px !important;
-    background-color: #353535 !important;
+    background-color: #d4e9f4 !important;
 }
 
 .selected-flag {
@@ -138,12 +140,12 @@
 }
 
 li.country.highlight {
-    background-color: #353535 !important;
+    background-color: #d4e9f4 !important;
 }
 
 li.country:hover {
-    background-color: #454545 !important;
-    color: white !important;
+    background-color: #d4e9f4 !important;
+    color: #212121 !important;
 }
 
 
@@ -156,25 +158,55 @@ li.country:hover {
 }
 
 ::-webkit-scrollbar-track {
-    background: #1a1a1a;
+    background: #d4e9f4;
     /* Track (scrollbar background) */
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #555;
+    background: #ffffff;
     /* Scrollbar handle */
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #777;
+    background: #ffffff;
     /* Handle on hover */
 }
 
 .MuiStepIcon-root.Mui-active {
-    color: rgba(145,18,190,1) !important; /* Change to blue */
+    color: #0191f8 !important;
+    /* Change to blue */
 }
+
 .MuiStepIcon-root.Mui-completed {
-    color: rgba(145,18,190,1) !important; /* Change to blue */
+    color: #0191f8 !important;
+    /* Change to blue */
+}
+
+.inputFieldSearchBar:focus-within {
+    border-color: 0191f8;
+}
+
+input {
+    outline: none;
+}
+
+
+.customFieldSearchBar:focus {
+    outline: 2px solid #0191f8;
+    border: 2px solid #0191f8;
+}
+
+
+/* Remove arrows/spinners in WebKit browsers (Chrome, Safari, Edge) */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Remove arrows/spinners in Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
 }

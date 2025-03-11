@@ -15,16 +15,14 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { EmailOutlined, EmailRounded } from "@mui/icons-material";
+import theme from "../../utils/theme";
 
 const SellerSignup = () => {
   const navigate = useNavigate();
 
   const [full_name, setFull_name] = useState("");
-  console.log("🚀 ~ SellerSignup ~ full_name:", full_name);
   const [email, setEmail] = useState("");
-  console.log("🚀 ~ SellerSignup ~ email:", email);
   const [phone_number, setPhone_number] = useState();
-  console.log("🚀 ~ SellerSignup ~ phone_number:", phone_number);
   const [company_name, setCompany_name] = useState("");
   const [country, setCountry] = useState("");
   const [company_website, setCompany_website] = useState("");
@@ -37,7 +35,6 @@ const SellerSignup = () => {
   const [isBuyer, setIsBuyer] = useState(false);
   const [stepCount, setStepCount] = useState(0);
   const [phone_country_code, setPhone_country_code] = useState("us");
-  console.log("🚀 ~ SellerSignup ~ phone_country_code:", phone_country_code);
 
   const handleStepCount = () => {
     if (stepCount === 3) return;
@@ -144,7 +141,7 @@ const SellerSignup = () => {
         display: { sm: "flex", xs: "block" },
         height: "100vh",
         background: {
-          sm: "black",
+          sm: theme.palette.background.default,
           xs: "linear-gradient(180deg, rgba(244,213,255,1) 0%, rgba(145,18,190,1) 33%, rgba(11,6,62,1) 70%, rgba(0,0,0,1) 100%)",
         },
       }}
@@ -159,7 +156,7 @@ const SellerSignup = () => {
           background: " rgb(255,255,255)",
           m: 2,
           background:
-            "linear-gradient(180deg, rgba(244,213,255,1) 0%, rgba(145,18,190,1) 33%, rgba(11,6,62,1) 70%, rgba(0,0,0,1) 100%)",
+            "linear-gradient(180deg, rgba(1, 145, 248,1) 0%, rgba(1, 145, 248,1) 33%, rgb(255, 255, 255) 100%)",
           borderRadius: 3,
         }}
       >
@@ -204,7 +201,7 @@ const SellerSignup = () => {
           </Box>
           <h1
             style={{
-              color: "white",
+              color: theme.palette.primary.main,
               marginBottom: "5px",
             }}
           >
@@ -212,7 +209,7 @@ const SellerSignup = () => {
           </h1>
           <p
             style={{
-              color: "white",
+              color: theme.palette.text.primary,
               marginBottom: "30px",
             }}
           >
@@ -251,16 +248,16 @@ const SellerSignup = () => {
           </Box>
           <span
             style={{
-              color: "#fff",
+              color: theme.palette.text.primary,
               marginTop: "30px",
             }}
           >
             Already have an account?
             <Link
-              to="/"
+              to="/login"
               style={{
                 marginLeft: "5px",
-                color: "white",
+                color: theme.palette.text.primary,
                 fontWeight: "500",
                 textDecoration: "none",
               }}
@@ -282,7 +279,7 @@ const SellerSignup = () => {
         >
           <h1
             style={{
-              color: "white",
+              color: theme.palette.primary.main,
               marginBottom: "5px",
             }}
           >
@@ -291,7 +288,7 @@ const SellerSignup = () => {
           {stepCount === 0 ? (
             <p
               style={{
-                color: "white",
+                color: theme.palette.text.primary,
                 marginBottom: "30px",
               }}
             >
@@ -300,7 +297,7 @@ const SellerSignup = () => {
           ) : stepCount === 1 ? (
             <p
               style={{
-                color: "white",
+                color: theme.palette.text.primary,
                 marginBottom: "30px",
               }}
             >
@@ -309,7 +306,7 @@ const SellerSignup = () => {
           ) : stepCount === 2 ? (
             <p
               style={{
-                color: "white",
+                color: theme.palette.text.primary,
                 marginBottom: "30px",
               }}
             >
@@ -352,7 +349,7 @@ const SellerSignup = () => {
                 <Box sx={{ marginTop: "10px" }}>
                   <label
                     style={{
-                      color: "white",
+                      color: theme.palette.text.primary,
                       width: "50%",
                       marginTop: "10px",
                       fontWeight: "300",
@@ -370,7 +367,7 @@ const SellerSignup = () => {
                 <Box sx={{ marginTop: "10px" }}>
                   <label
                     style={{
-                      color: "white",
+                      color: theme.palette.text.primary,
                       width: "50%",
                       marginTop: "10px",
                       fontWeight: "300",
@@ -385,10 +382,10 @@ const SellerSignup = () => {
                     value={email}
                   />
                 </Box>
-                 <Box sx={{ marginTop: "10px" }}>
+                <Box sx={{ marginTop: "10px" }}>
                   <label
                     style={{
-                      color: "white",
+                      color: theme.palette.text.primary,
                       width: "50%",
                       marginTop: "10px",
                       fontWeight: "300",
@@ -424,7 +421,7 @@ const SellerSignup = () => {
                 <Box sx={{ marginTop: "10px" }}>
                   <label
                     style={{
-                      color: "white",
+                      color: theme.palette.text.primary,
                       width: "50%",
                       marginTop: "10px",
                       fontWeight: "300",
@@ -442,7 +439,7 @@ const SellerSignup = () => {
                 <Box sx={{ marginTop: "10px" }}>
                   <label
                     style={{
-                      color: "white",
+                      color: theme.palette.text.primary,
                       width: "50%",
                       marginTop: "10px",
                       fontWeight: "300",
@@ -460,7 +457,7 @@ const SellerSignup = () => {
                 <Box sx={{ marginTop: "10px" }}>
                   <label
                     style={{
-                      color: "white",
+                      color: theme.palette.text.primary,
                       width: "50%",
                       marginTop: "10px",
                       fontWeight: "300",
@@ -481,7 +478,7 @@ const SellerSignup = () => {
                 <Box sx={{ marginTop: "10px" }}>
                   <label
                     style={{
-                      color: "white",
+                      color: theme.palette.text.primary,
                       width: "50%",
                       marginTop: "10px",
                       fontWeight: "300",
@@ -499,7 +496,7 @@ const SellerSignup = () => {
                 <Box sx={{ marginTop: "10px" }}>
                   <label
                     style={{
-                      color: "white",
+                      color: theme.palette.text.primary,
                       width: "50%",
                       marginTop: "10px",
                       fontWeight: "300",
@@ -517,7 +514,7 @@ const SellerSignup = () => {
                 <Box sx={{ marginTop: "10px" }}>
                   <label
                     style={{
-                      color: "white",
+                      color: theme.palette.text.primary,
                       width: "50%",
                       marginTop: "10px",
                       fontWeight: "300",

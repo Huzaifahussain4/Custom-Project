@@ -6,3 +6,4 @@ export { CustomFiled } from "./InputFiled/InputFiled";
 export { SearchField } from "./InputFiled/InputFiled";
 export { IconsFiled } from "./InputFiled/InputFiled";
 export { OtpFields } from "./InputFiled/InputFiled";
+export { Navbar } from "./Navbar/Navbar";

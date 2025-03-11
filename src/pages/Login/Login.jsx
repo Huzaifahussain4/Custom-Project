@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import "../../utils/appStyle.css";
+import theme from "../../utils/theme";
 // import darkBlueTheme from "./utils/theme.jsx";
 
 const Login = () => {
@@ -24,7 +25,6 @@ const Login = () => {
   // };
 
   const navigate = useNavigate();
-
 
   const validateInputs = () => {
     if (!login || !password) {
@@ -46,18 +46,19 @@ const Login = () => {
       if (validateInputs()) {
         setIsLoading(true);
         const response = await axios.post(
-          `${import.meta.env.VITE_API_URL}/api/login_seller/`,
+          `${import.meta.env.VITE_API_URL}/api/login_user/`,
           payload
           // { withCredentials: true } // ✅ Include credentials if needed
         );
+        console.log("🚀 ~ loginHandle ~ response:", response);
 
-        const token = response?.data?.tokens?.accessToken;
-        localStorage.setItem("token", token);
+        const token = response?.data?.token;
+        localStorage.setItem("Token", token);
         console.log("Login Successful :", response.data);
-        toast.success(response.data.message);
+        toast.success("Successfully Login");
 
         setTimeout(() => {
-          navigate("/signup");
+          navigate("/");
         }, 2000);
       }
     } catch (error) {
@@ -77,7 +78,7 @@ const Login = () => {
         display: { sm: "flex", xs: "block" },
         height: "100vh",
         bgcolor: {
-          sm: "black",
+          sm: theme.palette.background.default,
           xs: "linear-gradient(180deg, rgba(244,213,255,1) 0%, rgba(145,18,190,1) 33%, rgba(11,6,62,1) 70%, rgba(0,0,0,1) 100%)",
         },
       }}
@@ -92,7 +93,7 @@ const Login = () => {
           flexDirection: "column",
           m: 2,
           background:
-            "linear-gradient(180deg, rgba(244,213,255,1) 0%, rgba(145,18,190,1) 33%, rgba(11,6,62,1) 70%, rgba(0,0,0,1) 100%)",
+          "linear-gradient(180deg, rgba(1, 145, 248,1) 0%, rgba(1, 145, 248,1) 33%, rgb(255, 255, 255) 100%)",
           borderRadius: 3,
         }}
       >
@@ -133,12 +134,10 @@ const Login = () => {
           flexDirection: "column",
         }}
       >
-        
-
-        <h1 style={{ color: "white", marginBottom: "10px" }}>
+        <h1 style={{ color: theme.palette.primary.main, marginBottom: "10px" }}>
           Login to your buyer account
         </h1>
-        <p style={{ color: "white", marginBottom: "20px" }}>
+        <p style={{ color: theme.palette.text.primary, marginBottom: "20px" }}>
           Enter your credentials
         </p>
 
@@ -163,7 +162,7 @@ const Login = () => {
           <Box>
             <label
               style={{
-                color: "white",
+                color: theme.palette.text.primary,
                 width: "50%",
                 marginTop: "15px",
                 fontWeight: "300",
@@ -180,7 +179,7 @@ const Login = () => {
           <Box sx={{ marginTop: "20px" }}>
             <label
               style={{
-                color: "white",
+                color: theme.palette.text.primary,
                 width: "50%",
                 marginTop: "20px",
                 fontWeight: "300",
@@ -206,7 +205,7 @@ const Login = () => {
               to="/forgot_password"
               style={{
                 marginLeft: "5px",
-                color: "white",
+                color: theme.palette.text.primary,
                 textDecoration: "none",
                 fontSize: "14px",
               }}
@@ -234,16 +233,16 @@ const Login = () => {
         </Box>
 
         {/* Signup Link */}
-        <span style={{ color: "#fff", marginTop: "30px" }}>
+        <span style={{ color: theme.palette.text.primary, marginTop: "30px" }}>
           Create your account
           <Link
             to="/signup"
             style={{
               marginLeft: "5px",
-              color: "white",
+              color: theme.palette.text.primary,
               fontWeight: "500",
               textDecoration: "none",
-              fontSize: "18px",
+              // fontSize: "18px",
             }}
           >
             Signup

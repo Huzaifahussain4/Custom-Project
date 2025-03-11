@@ -1,11 +1,21 @@
 import React from "react";
-import { CustomButton } from "./components";
+import { CustomButton, Navbar } from "./components";
 import "./utils/appStyle.css";
-import { Outlet } from "react-router";
+import { Outlet, useLocation } from "react-router";
 
 const App = () => {
+  const location = useLocation();
+  const noNavBarRoutes = [
+    "/signup",
+    "/emailverification",
+    "/code",
+    "/forgotpassword",
+    "/login",
+    "/seller_signup",
+  ];
   return (
     <>
+      {!noNavBarRoutes.includes(location.pathname) && <Navbar />}
       <Outlet />
     </>
   );

@@ -8,6 +8,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import "../../utils/appStyle.css";
+import theme from "../../utils/theme";
 
 export function InputFiled({ typeValue, placeholderValue, onChange, value }) {
   return (
@@ -16,7 +17,7 @@ export function InputFiled({ typeValue, placeholderValue, onChange, value }) {
       sx={{
         borderRadius: "15px",
         border: "1px solid gray",
-        bgcolor: "#1a1a1a",
+        bgcolor: theme.palette.background.default,
         boxShadow: "none",
         width: { md: "100%", sm: "100%", xs: "100%" },
         marginTop: 1,
@@ -34,10 +35,10 @@ export function InputFiled({ typeValue, placeholderValue, onChange, value }) {
           // outline: "none",
           border: "none",
           width: "100%",
-          backgroundColor: "#1a1a1a",
+          backgroundColor: theme.palette.background.default,
           padding: "20px 0 20px 10px",
           borderRadius: "15px",
-          color: "#fff",
+          color: theme.palette.text.primary,
           fontSize: "16px",
           boxSizing: "border-box",
         }}
@@ -58,12 +59,13 @@ export function PhoneNumberField({
       sx={{
         borderRadius: 3,
         border: "none",
-        bgcolor: "#1a1a1a",
+        bgcolor: theme.palette.background.default,
         boxShadow: "none",
         width: "100%",
         marginTop: 1,
         padding: "0px",
       }}
+      className="customFieldSearchBar"
     >
       <PhoneInput
         country={countryCode} // Set the default country code
@@ -79,29 +81,28 @@ export function PhoneNumberField({
         placeholder={placeholderValue || "Enter phone number"}
         inputStyle={{
           width: "100%",
-          backgroundColor: "#1a1a1a",
+          backgroundColor: theme.palette.background.default,
           border: "1px solid gray",
-          color: "#fff",
+          color: theme.palette.text.primary,
           padding: "30px",
           paddingLeft: "55px",
           borderRadius: "15px",
         }}
         buttonStyle={{
-          backgroundColor: "transparent",
+          backgroundColor: theme.palette.background.default,
           border: "1px solid gray",
           borderRight: "none",
           borderRadius: "15px 0px 0px 15px",
         }}
         dropdownStyle={{
           height: "100px",
-          backgroundColor: "#1a1a1a",
-          color: "#fff",
+          backgroundColor: theme.palette.background.default,
+          color: theme.palette.text.primary,
         }}
       />
     </Paper>
   );
 }
-
 
 export function CustomFiled({ typeValue, placeholderValue, onChange }) {
   return (

@@ -1,14 +1,15 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, useTheme } from "@mui/material";
 import React from "react";
 
 export const CustomButton = ({ icon, text, onClick, disabled }) => {
+  const theme = useTheme();
   return (
     <Button
       className="custom-btn"
       disabled={disabled}
       sx={{
-        backgroundColor: "#1a1a1a",
-        color: "white",
+        backgroundColor: theme.palette.background.default,
+        color: theme.palette.primary.main,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -19,9 +20,10 @@ export const CustomButton = ({ icon, text, onClick, disabled }) => {
         cursor: "pointer",
         width: { md: "100%", sm: "100%", xs: "100%" },
         "&:hover": {
-          backgroundColor: "#1d1d1d",
-          color: "rgb(145,18,190)",
-          border: "1px solid rgb(145,18,190)",
+          backgroundColor: theme.palette.hover.main,
+          color: theme.palette.primary.main,
+          border: "1px solid",
+          borderColor: theme.palette.primary.main,
         },
       }}
       onClick={onClick}
