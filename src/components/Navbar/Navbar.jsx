@@ -23,7 +23,7 @@ import theme from "../../utils/theme";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import { Margin, Padding, WidthFull } from "@mui/icons-material";
 import shadows from "@mui/material/styles/shadows";
-import { CustomButton } from "../CustomButton/CustomButton";
+import { CustomButton, CustomStyleButton } from "../CustomButton/CustomButton";
 import { useNavigate } from "react-router";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
@@ -97,22 +97,17 @@ export const Navbar = () => {
   );
 
   return (
-    // <AppBar
-    //   position="static"
-    //   sx={{ backgroundColor: theme.palette.background.default, width: "100%", padding: "0px" }}
-    //   elevation={0}
-    // >
     <Container
       maxWidth={false}
       sx={{
+        position: "sticky",
+        top: 0,
         display: "flex",
         justifyContent: "center",
-        // width: { md: "100%", sm: "100%", xs: "100%" },
         width: "100%",
-
-        // padding: "0px",
-        // margin: "0px",
-        // maxwidth: "none",
+        zIndex: 1000,
+        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)",
+        backgroundColor: theme.palette.background.default,
       }}
     >
       <Toolbar
@@ -204,12 +199,16 @@ export const Navbar = () => {
           </>
         ) : (
           <Box sx={{ display: "flex", gap: 2 }}>
-            <CustomButton text="Login" onClick={() => navigate("/login")} />
+            <CustomStyleButton
+              text={"Login"}
+              backgroundColor={theme.palette.primary.main}
+              color={theme.palette.background.default}
+              borderColor={theme.palette.primary.main}
+              onClick={() => navigate("/login")}
+            />
           </Box>
         )}
-        {/* {!token && <CustomButton text="Login" />} */}
       </Toolbar>
     </Container>
-    // </AppBar>
   );
 };

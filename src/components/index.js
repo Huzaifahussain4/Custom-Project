@@ -1,4 +1,5 @@
 export { CustomButton } from "./CustomButton/CustomButton";
+export { CustomStyleButton } from "./CustomButton/CustomButton";
 export { SlideButton } from "./CustomButton/CustomButton";
 export { InputFiled } from "./InputFiled/InputFiled";
 export { PhoneNumberField } from "./InputFiled/InputFiled";
@@ -7,3 +8,4 @@ export { SearchField } from "./InputFiled/InputFiled";
 export { IconsFiled } from "./InputFiled/InputFiled";
 export { OtpFields } from "./InputFiled/InputFiled";
 export { Navbar } from "./Navbar/Navbar";
+export { CustomCart } from "./Cart/Cart";
