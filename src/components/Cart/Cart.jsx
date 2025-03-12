@@ -40,7 +40,7 @@ export const CustomCart = ({ img, title, description }) => {
           pb: "10px",
           display: "flex",
           justifyContent: "flex-end",
-          width: "40%",
+          width: { md: "40%", sm: "50%", xs: "60%" },
         }}
       >
         <CustomButton text="Learn More" />
