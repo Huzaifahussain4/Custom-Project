@@ -124,7 +124,7 @@ export const Navbar = () => {
           margin: "0px",
         }}
       >
-        <Box sx={{ display: { sm: "none", xs: "flex" }, gap: 2 }}>
+        <Box sx={{ display: { md: "none", xs: "flex" }, gap: 2 }}>
           <IconButton onClick={toggleDrawer(true)}>
             <MenuIcon />
           </IconButton>
@@ -141,12 +141,12 @@ export const Navbar = () => {
           LOGO
         </Typography>
         {/* Center-aligned Dropdown Buttons */}
-        <Box sx={{ display: { sm: "flex", xs: "none" }, gap: 2 }}>
+        <Box sx={{ display: { md: "flex", xs: "none" }, gap: 2 }}>
           <Button
             color="inherit"
             endIcon={<KeyboardArrowDownOutlinedIcon />}
             onClick={handleMenuClick}
-            sx={{ color: theme.palette.primary.main }}
+            sx={{ color: theme.palette.text.primary }}
           >
             Features
           </Button>
@@ -154,20 +154,20 @@ export const Navbar = () => {
             color="inherit"
             endIcon={<KeyboardArrowDownOutlinedIcon />}
             onClick={handleMenuClick}
-            sx={{ color: theme.palette.primary.main }}
+            sx={{ color: theme.palette.text.primary }}
           >
             Services
           </Button>
-          <Button color="inherit" sx={{ color: theme.palette.primary.main }}>
+          <Button color="inherit" sx={{ color: theme.palette.text.primary }}>
             Contact
           </Button>
-          <Button color="inherit" sx={{ color: theme.palette.primary.main }}>
+          <Button color="inherit" sx={{ color: theme.palette.text.primary }}>
             Contact
           </Button>
-          <Button color="inherit" sx={{ color: theme.palette.primary.main }}>
+          <Button color="inherit" sx={{ color: theme.palette.text.primary }}>
             Contact
           </Button>
-          <Button color="inherit" sx={{ color: theme.palette.primary.main }}>
+          <Button color="inherit" sx={{ color: theme.palette.text.primary }}>
             Contact
           </Button>
         </Box>

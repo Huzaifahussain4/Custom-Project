@@ -11,12 +11,32 @@ const Home = () => {
       sx={{
         display: "flex",
         justifyContent: "center",
-        backgroundColor: theme.palette.background.light,
+        position: "relative",
+        width: "100%",
+        height: "100%",
+        // backgroundColor: "white",
+        backgroundImage:
+          "linear-gradient(to right, #f0f0f0 1px, transparent 1px), linear-gradient(to bottom, #f0f0f0 1px, transparent 1px)",
+        backgroundSize: "6rem 4rem",
+        zIndex: -1,
       }}
     >
       <Box
         sx={{
-          display: { sm: "flex", xs: "block" },
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          top: 0,
+          background:
+            "radial-gradient(circle 500px at 50% 200px, #d4e9f4, transparent)",
+          zIndex: -1,
+        }}
+      />
+
+      <Box
+        sx={{
+          display: { sm: "flex" },
           justifyContent: "center",
           alignItems: "center",
           width: { md: "90%", xs: "100%" },
@@ -25,34 +45,36 @@ const Home = () => {
       >
         <Box
           sx={{
-            textAlign: "left",
-            width: { md: "40%", sx: "100%" },
-            // bgcolor: "red",
+            textAlign: { md: "start", xs: "center" },
+            width: { md: "40%", sm: "80%", xs: "100%" },
             height: "500px",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            alignItems: "left",
+            alignItems: { md: "start", xs: "center" },
           }}
         >
-          <span
-            style={{
+          <Box
+            sx={{
               color: theme.palette.text.primary,
               fontSize: "30px",
               fontWeight: "bold",
+              display: "inline",
+              marginLeft: { sm: "0px", xs: "15px" },
+              marginRight: { sm: "0px", xs: "15px" },
             }}
           >
             Everything you need to launch,
-            <span style={{ color: theme.palette.primary.main }}>
+            <Box sx={{ color: theme.palette.primary.main, display: "inline" }}>
               {" "}
               manage,
-            </span>{" "}
+            </Box>{" "}
             and scale your TikTok Shop
-            <span style={{ color: theme.palette.primary.main }}>
+            <Box sx={{ color: theme.palette.primary.main, display: "inline" }}>
               {" "}
               successfully.
-            </span>
-          </span>
+            </Box>
+          </Box>
 
           <span
             style={{
@@ -66,18 +88,20 @@ const Home = () => {
             products, creators, and videos in any category.
           </span>
 
-          <Box sx={{ marginTop: "20px", width: "20%" }}>
+          <Box sx={{ marginTop: "20px", width: "30%" }}>
             <CustomButton text={"Get Started"} />
           </Box>
         </Box>
+
         <Box
           sx={{
-            display: { sm: "flex", xs: "none" },
+            display: { md: "flex", xs: "none" },
             textAlign: "center",
-            width: { md: "40%", sx: "100%" },
+            width: { md: "50%", sm: "50%", xs: "100%" },
+            height: { md: "400px", sm: "300px", xs: "300px" },
           }}
         >
-          <img src={asset1} alt="" style={{ width: "80%" }} />
+          <img src={asset1} alt="" style={{ width: "100%", height: "100%" }} />
         </Box>
       </Box>
     </Box>
