@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -21,7 +21,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import theme from "../../utils/theme";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
-import { Margin, Padding, WidthFull } from "@mui/icons-material";
+import { BorderBottom, Margin, Padding, WidthFull } from "@mui/icons-material";
 import shadows from "@mui/material/styles/shadows";
 import { CustomButton, CustomStyleButton } from "../CustomButton/CustomButton";
 import { useNavigate } from "react-router";
@@ -96,25 +96,48 @@ export const Navbar = () => {
     </Box>
   );
 
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <Container
       maxWidth={false}
       sx={{
-        position: "sticky",
+        position: isSticky ? "fixed" : "absolute",
+        left: "50%", // Center align
+        transform: "translateX(-50%)",
         top: 0,
         display: "flex",
         justifyContent: "center",
-        width: "100%",
+        width: "90%",
         zIndex: 1000,
         boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)",
         backgroundColor: theme.palette.background.default,
+        borderBottomRightRadius: "20px", // Bottom right corner
+        borderBottomLeftRadius: "20px",
+        padding: "10px 40px", // Add padding to match the design
+        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)", // Subtle shadow
       }}
     >
       <Toolbar
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          width: { md: "90%", sm: "100%", xs: "100%" },
+          width: { md: "100%", sm: "100%", xs: "100%" },
           padding: "0px",
           margin: "0px",
         }}
@@ -141,7 +164,7 @@ export const Navbar = () => {
             color="inherit"
             endIcon={<KeyboardArrowDownOutlinedIcon />}
             onClick={handleMenuClick}
-            sx={{ color: theme.palette.text.primary }}
+            sx={{ color: theme.palette.text.primary, textTransform: "none" }}
           >
             Features
           </Button>
@@ -149,20 +172,26 @@ export const Navbar = () => {
             color="inherit"
             endIcon={<KeyboardArrowDownOutlinedIcon />}
             onClick={handleMenuClick}
-            sx={{ color: theme.palette.text.primary }}
+            sx={{ color: theme.palette.text.primary, textTransform: "none" }}
           >
             Services
           </Button>
-          <Button color="inherit" sx={{ color: theme.palette.text.primary }}>
+          <Button
+            color="inherit"
+            sx={{ color: theme.palette.text.primary, textTransform: "none" }}
+          >
             Contact
           </Button>
-          <Button color="inherit" sx={{ color: theme.palette.text.primary }}>
+          <Button
+            color="inherit"
+            sx={{ color: theme.palette.text.primary, textTransform: "none" }}
+          >
             Contact
           </Button>
-          <Button color="inherit" sx={{ color: theme.palette.text.primary }}>
-            Contact
-          </Button>
-          <Button color="inherit" sx={{ color: theme.palette.text.primary }}>
+          <Button
+            color="inherit"
+            sx={{ color: theme.palette.text.primary, textTransform: "none" }}
+          >
             Contact
           </Button>
         </Box>

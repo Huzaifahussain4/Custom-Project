@@ -5,7 +5,7 @@ const theme = createTheme({
   palette: {
     primary: { main: colors.primary },
     secondary: { main: colors.secondary },
-    success: { main: colors.success },
+    greenBg: { main: colors.greenBg },
     error: { main: colors.error },
     warning: { main: colors.warning },
     info: { main: colors.info },

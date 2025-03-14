@@ -1,7 +1,7 @@
 const colors = {
-  primary: "#0191f8", // Blue
-  secondary: "#9c27b0", // Purple
-  success: "#4caf50", // Green
+  primary: "#1E4841", // Blue
+  secondary: "#BBF49C", // Purple
+  greenBg: "#ECF4E9", // Green
   error: "#f44336", // Red
   warning: "#ff9800", // Orange
   info: "#2196f3", // Light Blue

@@ -14,7 +14,7 @@ export const CustomButton = ({ icon, text, onClick, disabled }) => {
         justifyContent: "center",
         alignItems: "center",
         border: "1px solid gray",
-        padding: 1.5,
+        padding: 1,
         borderRadius: "15px",
         fontSize: "12px",
         cursor: "pointer",
@@ -78,11 +78,12 @@ export const CustomStyleButton = ({
         alignItems: "center",
         border: "1px solid",
         borderColor: borderColor,
-        padding: 1.5,
+        padding: 1,
         borderRadius: "15px",
         fontSize: "12px",
         cursor: "pointer",
         width: { md: "100%", sm: "100%", xs: "100%" },
+        textTransform: "none",
 
         "&:hover": {
           backgroundColor: hover || theme.palette.background.default,

@@ -25,9 +25,9 @@ const Home = () => {
         width: "100%",
         height: "100%",
         // backgroundColor: "white",
-        backgroundImage:
-          "linear-gradient(to right, #f0f0f0 1px, transparent 1px), linear-gradient(to bottom, #f0f0f0 1px, transparent 1px)",
-        backgroundSize: "6rem 4rem",
+        // backgroundImage:
+        //   "linear-gradient(to right, #f0f0f0 1px, transparent 1px), linear-gradient(to bottom, #f0f0f0 1px, transparent 1px)",
+        // backgroundSize: "6rem 4rem",
       }}
     >
       <Box
@@ -35,9 +35,11 @@ const Home = () => {
           display: { sm: "flex" },
           justifyContent: "center",
           alignItems: "center",
-          width: { md: "90%", xs: "100%" },
+          width: { md: "100%", xs: "100%" },
           gap: 2,
-          height: { md: "600px", xs: "auto" },
+          height: { md: "700px", xs: "auto" },
+          backgroundColor: theme.palette.primary.main,
+          paddingTop: "70px",
         }}
       >
         <Box
@@ -53,9 +55,9 @@ const Home = () => {
         >
           <Box
             sx={{
-              color: theme.palette.text.primary,
-              fontSize: { md: "50px",sm: "40px", xs: "30px" },
-              lineHeight: { md: "50px",sm: "40px", xs: "30px" },
+              color: theme.palette.greenBg.main,
+              fontSize: { md: "50px", sm: "40px", xs: "30px" },
+              lineHeight: { md: "50px", sm: "40px", xs: "30px" },
               fontWeight: "bold",
               display: "inline",
               marginLeft: { sm: "0px", xs: "15px" },
@@ -63,12 +65,16 @@ const Home = () => {
             }}
           >
             Launch, Manage & Grow Your
-            <Box sx={{ color: theme.palette.primary.main, display: "inline" }}>
+            <Box
+              sx={{ color: theme.palette.secondary.main, display: "inline" }}
+            >
               {" "}
               TikTok
             </Box>{" "}
             Shop
-            <Box sx={{ color: theme.palette.primary.main, display: "inline" }}>
+            <Box
+              sx={{ color: theme.palette.secondary.main, display: "inline" }}
+            >
               {" "}
               Effortlessly.
             </Box>
@@ -76,7 +82,7 @@ const Home = () => {
 
           <span
             style={{
-              color: theme.palette.text.primary,
+              color: theme.palette.background.default,
               width: "70%",
               marginTop: "20px",
             }}
@@ -89,8 +95,8 @@ const Home = () => {
           <Box sx={{ marginTop: "20px", width: "30%" }}>
             <CustomStyleButton
               text={"Get Started"}
-              backgroundColor={theme.palette.primary.main}
-              color={theme.palette.background.default}
+              backgroundColor={theme.palette.secondary.main}
+              color={theme.palette.primary.main}
               borderColor={theme.palette.primary.main}
             />
           </Box>
@@ -100,7 +106,7 @@ const Home = () => {
           sx={{
             display: { md: "flex", xs: "none" },
             textAlign: "center",
-            width: { md: "50%", sm: "50%", xs: "100%" },
+            width: { md: "40%", sm: "50%", xs: "100%" },
             height: { md: "400px", sm: "300px", xs: "300px" },
           }}
         >
@@ -246,7 +252,7 @@ const Home = () => {
       </Box>
 
       {/* Background Grids  */}
-      <Box
+      {/* <Box
         sx={{
           position: "absolute",
           bottom: 0,
@@ -257,7 +263,7 @@ const Home = () => {
             "radial-gradient(circle 500px at 50% 200px, #d4e9f4, transparent)",
           zIndex: -1,
         }}
-      />
+      /> */}
     </Box>
   );
 };
