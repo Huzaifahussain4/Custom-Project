@@ -9,3 +9,4 @@ export { IconsFiled } from "./InputFiled/InputFiled";
 export { OtpFields } from "./InputFiled/InputFiled";
 export { Navbar } from "./Navbar/Navbar";
 export { CustomCart } from "./Cart/Cart";
+export { LiveCard } from "./LiveCard/LiveCard";

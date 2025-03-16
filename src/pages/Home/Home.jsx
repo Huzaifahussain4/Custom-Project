@@ -11,7 +11,7 @@ import {
   CustomButton,
   CustomStyleButton,
 } from "../../components/CustomButton/CustomButton";
-import { CustomCart } from "../../components";
+import { CustomCart, LiveCard } from "../../components";
 
 const Home = () => {
   return (
@@ -39,6 +39,9 @@ const Home = () => {
           gap: 2,
           height: { md: "700px", xs: "auto" },
           backgroundColor: theme.palette.primary.main,
+          backgroundImage:
+            "linear-gradient(to right,rgba(240, 240, 240, 0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(240, 240, 240, 0.08)  1px, transparent 1px)",
+          backgroundSize: "6rem 4rem",
           paddingTop: "70px",
         }}
       >
@@ -122,7 +125,7 @@ const Home = () => {
           alignItems: "center",
         }}
       >
-        <Box
+        {/* <Box
           sx={{
             display: "flex",
             justifyContent: "center",
@@ -184,7 +187,7 @@ const Home = () => {
               informed. Stay ahead. Scale smarter with TrackIt!{" "}
             </Box>
           </Box>
-        </Box>
+        </Box> */}
 
         <Box
           sx={{
@@ -195,16 +198,16 @@ const Home = () => {
             marginTop: "50px",
             // marginLeft: { sm: "0px", xs: "15px" },
             // marginRight: { sm: "0px", xs: "15px" },
-            textAlign: "center",
-            width: { md: "50%", sm: "100%" },
-            padding: "0px 20px",
+            textAlign: { md: "left", sm: "center", xs: "center" },
+            width: { md: "80%", sm: "100%" },
+            // padding: "0px 20px",
             lineHeight: "30px",
           }}
         >
-          One powerful platform for all your data needs.
+          How it Works
         </Box>
 
-        <Box
+        {/* <Box
           sx={{
             color: theme.palette.text.primary,
             width: { md: "30%", sm: "40%", xs: "80%" },
@@ -215,7 +218,7 @@ const Home = () => {
         >
           No more juggling multiple tools—TrackIt centralizes your data for
           smarter decisions.
-        </Box>
+        </Box> */}
 
         <Box
           sx={{
@@ -241,18 +244,139 @@ const Home = () => {
               "Our mission is to empower businesses with real-time data insights, helping them make smarter decisions and scale effortlessly in the evolving e-commerce landscape."
             }
           />
-          {/* <CustomCart
+          <CustomCart
             img={missionAsset}
-            title={"Mission"}
+            title={"Goal"}
             description={
               "Our mission is to empower businesses with real-time data insights, helping them make smarter decisions and scale effortlessly in the evolving e-commerce landscape."
             }
-          /> */}
+          />
+        </Box>
+      </Box>
+
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
+        <Box
+          sx={{
+            width: "80%",
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: "50px",
+          }}
+        >
+          <Box sx={{ width: "80%" }}>
+            <Box
+              sx={{
+                color: theme.palette.text.primary,
+                fontSize: "30px",
+                fontWeight: "bold",
+
+                textAlign: { md: "left", sm: "center", xs: "center" },
+                width: { md: "100%", sm: "100%" },
+                padding: "0px 20px",
+                lineHeight: "30px",
+              }}
+            >
+              Live Auctions
+            </Box>
+            <Box
+              sx={{
+                color: theme.palette.text.primary,
+                fontSize: "16px",
+                // fontWeight: "bold",
+                marginTop: 1,
+                textAlign: { md: "left", sm: "center", xs: "center" },
+                width: { md: "80%", sm: "100%" },
+                padding: "0px 20px",
+                lineHeight: "16px",
+              }}
+            >
+              Compete with others to get the rarest product{" "}
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              fontWeight: "bold",
+              fontSize: "18px",
+              color: "#0D1B2A", // Adjust color as needed
+              position: "relative",
+              "&::after": {
+                content: '""',
+                width: "50%",
+                height: "3px",
+                backgroundColor: theme.palette.primary.main, // Adjust color as needed
+                position: "absolute",
+                bottom: "10px",
+                left: "76%",
+                transform: "translateX(-50%)",
+                borderRadius: "10px",
+              },
+            }}
+          >
+            Explore More
+          </Box>
+        </Box>
+
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            // alignItems: "center",
+            // flexDirection: { md: "row", sm: "column", xs: "column" },
+            flexWrap: "wrap",
+            gap: 2,
+            mt: 4,
+          }}
+        >
+          <LiveCard
+            sx={{
+              flexBasis: { xs: "100%", sm: "48%", md: "23%" },
+              flexShrink: 0,
+              transition: "all 0.3s ease-in-out",
+              minWidth: "200px",
+            }}
+          />
+          <LiveCard
+            sx={{
+              flexBasis: { xs: "100%", sm: "48%", md: "23%" },
+              flexShrink: 0,
+              transition: "all 0.3s ease-in-out",
+              minWidth: "200px",
+            }}
+          />
+          <LiveCard
+            sx={{
+              flexBasis: { xs: "100%", sm: "48%", md: "23%" },
+              flexShrink: 0,
+              transition: "all 0.3s ease-in-out",
+              minWidth: "200px",
+            }}
+          />
+          <LiveCard
+            sx={{
+              flexBasis: { xs: "100%", sm: "48%", md: "23%" },
+              flexShrink: 0,
+              transition: "all 0.3s ease-in-out",
+              minWidth: "200px",
+            }}
+          />
         </Box>
       </Box>
 
       {/* Background Grids  */}
-      {/* <Box
+      <Box
         sx={{
           position: "absolute",
           bottom: 0,
@@ -263,7 +387,7 @@ const Home = () => {
             "radial-gradient(circle 500px at 50% 200px, #d4e9f4, transparent)",
           zIndex: -1,
         }}
-      /> */}
+      />
     </Box>
   );
 };

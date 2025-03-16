@@ -129,7 +129,7 @@ export const Navbar = () => {
         backgroundColor: theme.palette.background.default,
         borderBottomRightRadius: "20px", // Bottom right corner
         borderBottomLeftRadius: "20px",
-        padding: "10px 40px", // Add padding to match the design
+        // padding: "10px 40px", // Add padding to match the design
         boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)", // Subtle shadow
       }}
     >
@@ -166,7 +166,7 @@ export const Navbar = () => {
             onClick={handleMenuClick}
             sx={{ color: theme.palette.text.primary, textTransform: "none" }}
           >
-            Features
+            Live
           </Button>
           <Button
             color="inherit"
@@ -174,19 +174,25 @@ export const Navbar = () => {
             onClick={handleMenuClick}
             sx={{ color: theme.palette.text.primary, textTransform: "none" }}
           >
-            Services
+            Product
           </Button>
           <Button
             color="inherit"
             sx={{ color: theme.palette.text.primary, textTransform: "none" }}
           >
-            Contact
+            Shop
           </Button>
           <Button
             color="inherit"
             sx={{ color: theme.palette.text.primary, textTransform: "none" }}
           >
-            Contact
+            Creator
+          </Button>
+          <Button
+            color="inherit"
+            sx={{ color: theme.palette.text.primary, textTransform: "none" }}
+          >
+            About
           </Button>
           <Button
             color="inherit"

@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import React from "react";
 import theme from "../../utils/theme";
-import { CustomButton } from "../CustomButton/CustomButton";
+import { CustomButton, CustomStyleButton } from "../CustomButton/CustomButton";
 
 export const CustomCart = ({ img, title, description }) => {
   return (
@@ -9,25 +9,27 @@ export const CustomCart = ({ img, title, description }) => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
+        justifyContent: "center",
         gap: 2,
-        width: { md: "30%", sm: "60%", xs: "80%" },
-        border: "1px solid gray",
+        width: { md: "25%", sm: "60%", xs: "80%" },
+        // border: "1px solid gray",
         padding: 2,
-        borderRadius: 2,
-        height: { md: "550px", xs: "auto" }, // Ensure all cards have equal height
-        minHeight: "450px",
+        borderRadius: 4,
+        height: { md: "300px", xs: "auto" }, // Ensure all cards have equal height
+        minHeight: "410px",
+        backgroundColor: theme.palette.greenBg.main,
         // overflow: "hidden",
       }}
     >
-      <Box sx={{ width: "100%" }}>
+      {/* <Box sx={{ width: "80%" }}>
         <img src={img} alt="" style={{ width: "100%", height: "200px" }} />
-      </Box>
+      </Box> */}
       <Box
         sx={{
-          fontWeight: "bold",
+          fontWeight: "800",
           fontSize: "30px",
           color: theme.palette.primary.main,
+          pt: "10px",
         }}
       >
         {title}
@@ -43,7 +45,11 @@ export const CustomCart = ({ img, title, description }) => {
           width: { md: "40%", sm: "50%", xs: "60%" },
         }}
       >
-        <CustomButton text="Learn More" />
+        <CustomStyleButton
+          text="Learn More"
+          backgroundColor={theme.palette.primary.main}
+          color={theme.palette.background.default}
+        />
       </Box>
     </Box>
   );
