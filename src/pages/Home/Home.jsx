@@ -6,14 +6,43 @@ import asset1 from "../../../src/assets/asset1.svg";
 import visionAsset from "../../assets/vision.svg";
 import missionAsset from "../../assets/mission.svg";
 import aboutUs from "../../assets/aboutus.svg";
+import PaletteIcon from "@mui/icons-material/Palette";
+import MusicNoteIcon from "@mui/icons-material/MusicNote";
+import SportsBasketballIcon from "@mui/icons-material/SportsBasketball";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
+import FlightIcon from "@mui/icons-material/Flight";
+import DevicesIcon from "@mui/icons-material/Devices";
 
 import {
   CustomButton,
   CustomStyleButton,
 } from "../../components/CustomButton/CustomButton";
-import { CustomCart, LiveCard } from "../../components";
+import {
+  CategoryCard,
+  ChooseUsSection,
+  CustomCart,
+  FAQSection,
+  LiveCard,
+  PopularProductsCard,
+  TopCreatorsCards,
+} from "../../components";
 
 const Home = () => {
+  const categories = [
+    { id: 1, title: "Art", icon: <PaletteIcon /> },
+    { id: 2, title: "Music", icon: <MusicNoteIcon /> },
+    { id: 3, title: "Sports", icon: <SportsBasketballIcon /> },
+    { id: 4, title: "Food", icon: <RestaurantIcon /> },
+    { id: 5, title: "Travel", icon: <FlightIcon /> },
+    { id: 6, title: "Technology", icon: <DevicesIcon /> },
+  ];
+
+  const popularProductsCategory = [
+    { id: 1, title: "Abstract Attractive", createdBy: "Thomas Cox" },
+    { id: 2, title: "Abstract Attractive", createdBy: "Thomas Cox" },
+    { id: 3, title: "Abstract Attractive", createdBy: "Thomas Cox" },
+  ];
+
   return (
     <Box
       sx={{
@@ -192,9 +221,9 @@ const Home = () => {
         <Box
           sx={{
             color: theme.palette.text.primary,
-            fontSize: "30px",
+            fontSize: "35px",
             lineHeight: "50px",
-            fontWeight: "bold",
+            fontWeight: "800",
             marginTop: "50px",
             // marginLeft: { sm: "0px", xs: "15px" },
             // marginRight: { sm: "0px", xs: "15px" },
@@ -267,7 +296,7 @@ const Home = () => {
           sx={{
             width: "80%",
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: { md: "space-between", sm: "center", xs: "center" },
             marginTop: "50px",
           }}
         >
@@ -275,12 +304,12 @@ const Home = () => {
             <Box
               sx={{
                 color: theme.palette.text.primary,
-                fontSize: "30px",
-                fontWeight: "bold",
+                fontSize: "35px",
+                fontWeight: "800",
 
                 textAlign: { md: "left", sm: "center", xs: "center" },
                 width: { md: "100%", sm: "100%" },
-                padding: "0px 20px",
+                // padding: "0px 20px",
                 lineHeight: "30px",
               }}
             >
@@ -294,7 +323,7 @@ const Home = () => {
                 marginTop: 1,
                 textAlign: { md: "left", sm: "center", xs: "center" },
                 width: { md: "80%", sm: "100%" },
-                padding: "0px 20px",
+                // padding: "0px 20px",
                 lineHeight: "16px",
               }}
             >
@@ -303,7 +332,7 @@ const Home = () => {
           </Box>
           <Box
             sx={{
-              display: "flex",
+              display: { md: "flex", sm: "none", xs: "none" },
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
@@ -372,6 +401,455 @@ const Home = () => {
               minWidth: "200px",
             }}
           />
+        </Box>
+        <Box
+          sx={{
+            display: { md: "none", sm: "flex", xs: "flex" },
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "right",
+            fontWeight: "bold",
+            fontSize: "18px",
+            color: "#0D1B2A", // Adjust color as needed
+            position: "relative",
+            mt: 3,
+            mb: 3,
+            "&::after": {
+              content: '""',
+              width: "50%",
+              height: "3px",
+              backgroundColor: theme.palette.primary.main, // Adjust color as needed
+              position: "absolute",
+              bottom: "-5px",
+              left: "76%",
+              transform: "translateX(-50%)",
+              borderRadius: "10px",
+            },
+          }}
+        >
+          Explore More
+        </Box>
+      </Box>
+
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
+        <Box
+          sx={{
+            width: "80%",
+            display: "flex",
+            justifyContent: { md: "space-between", sm: "center", xs: "center" },
+            marginTop: "50px",
+          }}
+        >
+          <Box sx={{ width: "80%" }}>
+            <Box
+              sx={{
+                color: theme.palette.text.primary,
+                fontSize: "35px",
+                fontWeight: "800",
+
+                textAlign: { md: "left", sm: "center", xs: "center" },
+                width: { md: "100%", sm: "100%" },
+                // padding: "0px 20px",
+                lineHeight: "30px",
+              }}
+            >
+              Top Creators
+            </Box>
+            <Box
+              sx={{
+                color: theme.palette.text.primary,
+                fontSize: "16px",
+                // fontWeight: "bold",
+                marginTop: 1,
+                textAlign: { md: "left", sm: "center", xs: "center" },
+                width: { md: "80%", sm: "100%" },
+                // padding: "0px 20px",
+                lineHeight: "16px",
+              }}
+            >
+              Compete with others to get the rarest product{" "}
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              display: { md: "flex", sm: "none", xs: "none" },
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "right",
+              fontWeight: "bold",
+              fontSize: "18px",
+              color: "#0D1B2A", // Adjust color as needed
+              position: "relative",
+              "&::after": {
+                content: '""',
+                width: "50%",
+                height: "3px",
+                backgroundColor: theme.palette.primary.main, // Adjust color as needed
+                position: "absolute",
+                bottom: "10px",
+                left: "76%",
+                transform: "translateX(-50%)",
+                borderRadius: "10px",
+              },
+            }}
+          >
+            Explore More
+          </Box>
+        </Box>
+
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            // flexDirection: { md: "row", sm: "column", xs: "column" },
+            flexWrap: "wrap",
+            gap: 3,
+            mt: 4,
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              gap: 3.5,
+              width: "80%",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            {categories.map((category) => (
+              <Box
+                sx={{
+                  // width: { xs: "100%", sm: "48%", md: "13%" },
+                  flexBasis: "12%",
+                  flexShrink: 0,
+                  transition: "all 0.3s ease-in-out",
+                  minWidth: "180px",
+                }}
+              >
+                <TopCreatorsCards />
+              </Box>
+            ))}
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            display: { md: "none", sm: "flex", xs: "flex" },
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "right",
+            fontWeight: "bold",
+            fontSize: "18px",
+            color: "#0D1B2A", // Adjust color as needed
+            position: "relative",
+            mt: 3,
+            mb: 3,
+            "&::after": {
+              content: '""',
+              width: "50%",
+              height: "3px",
+              backgroundColor: theme.palette.primary.main, // Adjust color as needed
+              position: "absolute",
+              bottom: "-5px",
+              left: "76%",
+              transform: "translateX(-50%)",
+              borderRadius: "10px",
+            },
+          }}
+        >
+          Explore More
+        </Box>
+      </Box>
+
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
+        <Box
+          sx={{
+            width: "80%",
+            display: "flex",
+            justifyContent: { md: "space-between", sm: "center", xs: "center" },
+            marginTop: "50px",
+          }}
+        >
+          <Box sx={{ width: "80%" }}>
+            <Box
+              sx={{
+                color: theme.palette.text.primary,
+                fontSize: "35px",
+                fontWeight: "800",
+
+                textAlign: { md: "left", sm: "center", xs: "center" },
+                width: { md: "100%", sm: "100%" },
+                // padding: "0px 20px",
+                lineHeight: "30px",
+              }}
+            >
+              Top Creators
+            </Box>
+            <Box
+              sx={{
+                color: theme.palette.text.primary,
+                fontSize: "16px",
+                // fontWeight: "bold",
+                marginTop: 1,
+                textAlign: { md: "left", sm: "center", xs: "center" },
+                width: { md: "80%", sm: "100%" },
+                // padding: "0px 20px",
+                lineHeight: "16px",
+              }}
+            >
+              Compete with others to get the rarest product{" "}
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              display: { md: "flex", sm: "none", xs: "none" },
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "right",
+              fontWeight: "bold",
+              fontSize: "18px",
+              color: "#0D1B2A", // Adjust color as needed
+              position: "relative",
+              "&::after": {
+                content: '""',
+                width: "50%",
+                height: "3px",
+                backgroundColor: theme.palette.primary.main, // Adjust color as needed
+                position: "absolute",
+                bottom: "10px",
+                left: "76%",
+                transform: "translateX(-50%)",
+                borderRadius: "10px",
+              },
+            }}
+          >
+            Explore More
+          </Box>
+        </Box>
+
+        <Box
+          sx={{
+            flexBasis: "12%",
+            flexShrink: 0,
+            display: "flex",
+            justifyContent: "center",
+            gap: 3.5,
+            mt: 4,
+            width: "80%",
+            flexWrap: "wrap",
+          }}
+        >
+          {categories.map((category) => (
+            <Box
+              sx={{
+                flexBasis: "12%",
+                flexShrink: 0,
+                transition: "all 0.3s ease-in-out",
+                minWidth: "180px",
+              }}
+            >
+              <CategoryCard
+                key={category.id}
+                title={category.title}
+                icon={category.icon}
+              />
+            </Box>
+          ))}
+        </Box>
+        <Box
+          sx={{
+            display: { md: "none", sm: "flex", xs: "flex" },
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "right",
+            fontWeight: "bold",
+            fontSize: "18px",
+            color: "#0D1B2A", // Adjust color as needed
+            position: "relative",
+            mt: 3,
+            mb: 3,
+            "&::after": {
+              content: '""',
+              width: "50%",
+              height: "3px",
+              backgroundColor: theme.palette.primary.main, // Adjust color as needed
+              position: "absolute",
+              bottom: "-5px",
+              left: "76%",
+              transform: "translateX(-50%)",
+              borderRadius: "10px",
+            },
+          }}
+        >
+          Explore More
+        </Box>
+      </Box>
+
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
+        <Box
+          sx={{
+            width: "80%",
+            display: "flex",
+            justifyContent: { md: "space-between", sm: "center", xs: "center" },
+            marginTop: "50px",
+          }}
+        >
+          <Box sx={{ width: "80%" }}>
+            <Box
+              sx={{
+                color: theme.palette.text.primary,
+                fontSize: "35px",
+                fontWeight: "800",
+
+                textAlign: { md: "left", sm: "center", xs: "center" },
+                width: { md: "100%", sm: "100%" },
+                // padding: "0px 20px",
+                lineHeight: "30px",
+              }}
+            >
+              Top Creators
+            </Box>
+            <Box
+              sx={{
+                color: theme.palette.text.primary,
+                fontSize: "16px",
+                // fontWeight: "bold",
+                marginTop: 1,
+                textAlign: { md: "left", sm: "center", xs: "center" },
+                width: { md: "80%", sm: "100%" },
+                // padding: "0px 20px",
+                lineHeight: "16px",
+              }}
+            >
+              Compete with others to get the rarest product{" "}
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              display: { md: "flex", sm: "none", xs: "none" },
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "right",
+              fontWeight: "bold",
+              fontSize: "18px",
+              color: "#0D1B2A", // Adjust color as needed
+              position: "relative",
+              "&::after": {
+                content: '""',
+                width: "50%",
+                height: "3px",
+                backgroundColor: theme.palette.primary.main, // Adjust color as needed
+                position: "absolute",
+                bottom: "10px",
+                left: "76%",
+                transform: "translateX(-50%)",
+                borderRadius: "10px",
+              },
+            }}
+          >
+            Explore More
+          </Box>
+        </Box>
+
+        <Box
+          sx={{
+            // flexBasis: "12%",
+            // flexShrink: 0,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: 3,
+            mt: 4,
+            width: "80%",
+            flexWrap: "wrap",
+          }}
+        >
+          {popularProductsCategory.map((category) => (
+            <Box
+              sx={{
+                flexBasis: "390px",
+                flexShrink: 0,
+                transition: "all 0.3s ease-in-out",
+                width: "100%",
+                // minWidth: "180px",
+                // display: "flex",
+              }}
+            >
+              <PopularProductsCard
+                title={category.title}
+                createdBy={category.createdBy}
+              />
+            </Box>
+          ))}
+        </Box>
+        <Box
+          sx={{
+            display: { md: "none", sm: "flex", xs: "flex" },
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "right",
+            fontWeight: "bold",
+            fontSize: "18px",
+            color: "#0D1B2A", // Adjust color as needed
+            position: "relative",
+            mt: 3,
+            mb: 3,
+            "&::after": {
+              content: '""',
+              width: "50%",
+              height: "3px",
+              backgroundColor: theme.palette.primary.main, // Adjust color as needed
+              position: "absolute",
+              bottom: "-5px",
+              left: "76%",
+              transform: "translateX(-50%)",
+              borderRadius: "10px",
+            },
+          }}
+        >
+          Explore More
+        </Box>
+      </Box>
+
+      <Box sx={{ width: "100%" }}>
+        <Box sx={{ width: "100%", mt: 10 }}>
+          <ChooseUsSection />
+        </Box>
+
+        <Box sx={{ width: "100%", mt: "100px" }}>
+          <FAQSection />
         </Box>
       </Box>
 

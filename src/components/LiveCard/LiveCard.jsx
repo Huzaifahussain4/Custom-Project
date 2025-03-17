@@ -78,7 +78,7 @@ export const LiveCard = () => {
           <CustomStyleButton
             backgroundColor={theme.palette.primary.main}
             color={theme.palette.background.default}
-            text={"Buy Now"}
+            text={"Check Out"}
           />
         </Box>
       </Box>

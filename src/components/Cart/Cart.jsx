@@ -16,7 +16,7 @@ export const CustomCart = ({ img, title, description }) => {
         padding: 2,
         borderRadius: 4,
         height: { md: "300px", xs: "auto" }, // Ensure all cards have equal height
-        minHeight: "410px",
+        minHeight: "350px",
         backgroundColor: theme.palette.greenBg.main,
         // overflow: "hidden",
       }}
