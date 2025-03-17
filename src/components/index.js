@@ -1,5 +1,6 @@
 export { CustomButton } from "./CustomButton/CustomButton";
 export { CustomStyleButton } from "./CustomButton/CustomButton";
+export { CustomStyleButtonComponent } from "./CustomButton/CustomButton";
 export { SlideButton } from "./CustomButton/CustomButton";
 export { InputFiled } from "./InputFiled/InputFiled";
 export { PhoneNumberField } from "./InputFiled/InputFiled";
@@ -15,3 +16,5 @@ export { CategoryCard } from "./CategoryCard/CategoryCard";
 export { PopularProductsCard } from "./PopularProductsCard/PopularProductsCard";
 export { ChooseUsSection } from "./ChooseUs/ChooseUs";
 export { FAQSection } from "./FAQSection/FAQSection";
+export { SignupEmailSection } from "./SignupEmailSection/SignupEmailSection";
+export { Footer } from "./Footer/Footer";
