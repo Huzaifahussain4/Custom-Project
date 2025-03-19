@@ -9,6 +9,7 @@ import {
 } from "react-router";
 import { RouterProvider } from "react-router-dom";
 import {
+  Contact,
   Forgotpassword,
   Home,
   Login,
@@ -28,6 +29,7 @@ const route = createBrowserRouter(
         <Route path="signup" element={<Signup />} />
         <Route path="seller_signup" element={<SellerSignup />} />
         <Route path="forgot_password" element={<Forgotpassword />} />
+        <Route path="contact" element={<Contact />} />
       </Route>
     </>
   )

@@ -185,7 +185,7 @@ li.country:hover {
 }
 
 .inputFieldSearchBar:focus-within {
-    border-color: 0191f8;
+    border-color: red;
 }
 
 input {

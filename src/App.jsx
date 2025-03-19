@@ -1,5 +1,5 @@
 import React from "react";
-import { CustomButton, Navbar } from "./components";
+import { CustomButton, Footer, Navbar } from "./components";
 import "./utils/appStyle.css";
 import { Outlet, useLocation } from "react-router";
 
@@ -17,6 +17,7 @@ const App = () => {
     <>
       {!noNavBarRoutes.includes(location.pathname) && <Navbar />}
       <Outlet />
+      <Footer />
     </>
   );
 };

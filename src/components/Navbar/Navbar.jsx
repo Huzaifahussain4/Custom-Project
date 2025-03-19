@@ -197,6 +197,7 @@ export const Navbar = () => {
           <Button
             color="inherit"
             sx={{ color: theme.palette.text.primary, textTransform: "none" }}
+            onClick={() => navigate("/contact")}
           >
             Contact
           </Button>
