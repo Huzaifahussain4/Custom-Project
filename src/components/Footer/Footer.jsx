@@ -17,7 +17,7 @@ export const Footer = () => {
   return (
     <Box
       component="footer"
-      sx={{ py: 4, borderTop: "1px solid #eaeaea", mt: 20, mb: 4 }}
+      sx={{ py: 4, borderTop: "1px solid #eaeaea", mb: 4 }}
     >
       <Container maxWidth="lg" sx={{ mt: 4 }}>
         <Grid container spacing={4}>
@@ -115,7 +115,9 @@ export const Footer = () => {
             >
               Social Media
             </Typography>
-            <Box sx={{ display: "flex", gap: 1 }}>
+            <Box
+              sx={{ display: "flex", flexWrap: "wrap", width: "60%", gap: 1 }}
+            >
               <IconButton
                 aria-label="Instagram"
                 sx={{

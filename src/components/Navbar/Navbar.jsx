@@ -155,6 +155,7 @@ export const Navbar = () => {
         <Typography
           variant="h6"
           sx={{ fontWeight: "bold", color: theme.palette.primary.main }}
+          onClick={() => navigate("/")}
         >
           LOGO
         </Typography>
@@ -191,6 +192,7 @@ export const Navbar = () => {
           <Button
             color="inherit"
             sx={{ color: theme.palette.text.primary, textTransform: "none" }}
+            onClick={() => navigate("/about_us")}
           >
             About
           </Button>

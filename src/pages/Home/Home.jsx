@@ -22,7 +22,6 @@ import {
   ChooseUsSection,
   CustomCart,
   FAQSection,
-  Footer,
   LiveCard,
   PopularProductsCard,
   SignupEmailSection,
@@ -856,9 +855,6 @@ const Home = () => {
 
         <Box sx={{ width: "100%" }}>
           <SignupEmailSection />
-        </Box>
-        <Box sx={{ width: "100%", marginTop: "50px" }}>
-          <Footer />
         </Box>
       </Box>
 
