@@ -18,3 +18,5 @@ export { ChooseUsSection } from "./ChooseUs/ChooseUs";
 export { FAQSection } from "./FAQSection/FAQSection";
 export { SignupEmailSection } from "./SignupEmailSection/SignupEmailSection";
 export { Footer } from "./Footer/Footer";
+export { TeamMember } from "./TeamMemberCard/TeamMemberCard";
+export { TeamSection } from "./TeamSection/TeamSection";

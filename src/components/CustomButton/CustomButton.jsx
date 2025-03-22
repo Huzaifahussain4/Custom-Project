@@ -1,5 +1,6 @@
 import { Box, Button, useTheme } from "@mui/material";
 import React from "react";
+import "../../utils/appStyle.css";
 
 export const CustomButton = ({ icon, text, onClick, disabled }) => {
   const theme = useTheme();
@@ -46,7 +47,6 @@ export const CustomButton = ({ icon, text, onClick, disabled }) => {
           display: "flex",
           alignContent: "center",
           justifyContent: "center",
-          fontFamily: "Roboto, sans-serif",
           fontWeight: "500",
         }}
       >
@@ -112,7 +112,6 @@ export const CustomStyleButton = ({
           display: "flex",
           alignContent: "center",
           justifyContent: "center",
-          fontFamily: "Roboto, sans-serif",
           fontWeight: "500",
         }}
       >
@@ -145,12 +144,13 @@ export const CustomStyleButtonComponent = ({
         alignItems: "center",
         border: "1px solid",
         borderColor: borderColor,
-        padding: {padding},
+        padding: { padding },
         borderRadius: "15px",
         fontSize: "12px",
         cursor: "pointer",
         width: { md: "100%", sm: "100%", xs: "100%" },
         textTransform: "none",
+        // fontFamily: "Poppins, sans-serif",
 
         "&:hover": {
           backgroundColor: hover || theme.palette.background.default,
@@ -179,7 +179,6 @@ export const CustomStyleButtonComponent = ({
           display: "flex",
           alignContent: "center",
           justifyContent: "center",
-          fontFamily: "Roboto, sans-serif",
           fontWeight: "500",
         }}
       >
