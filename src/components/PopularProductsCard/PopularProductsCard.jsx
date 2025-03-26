@@ -3,7 +3,13 @@ import { Box, Typography, Card, CardContent, Avatar } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import theme from "../../utils/theme";
 
-export const PopularProductsCard = ({ title, createdBy }) => {
+export const PopularProductsCard = ({
+  title,
+  createdBy,
+  ImgSrc,
+  likesCount,
+  dpImgSrc,
+}) => {
   return (
     <Card
       sx={{
@@ -24,14 +30,19 @@ export const PopularProductsCard = ({ title, createdBy }) => {
           mb: 5,
         }}
       >
+        <img
+          src={ImgSrc}
+          alt=""
+          style={{ width: "100%", borderRadius: "16px" }}
+        />
         {/* Like button */}
         <Box
           sx={{
             position: "absolute",
             top: "12px",
             right: "12px",
-            backgroundColor: theme.palette.primary.main,
-            color: "white",
+            backgroundColor: theme.palette.secondary.main,
+            color: theme.palette.primary.main,
             borderRadius: "8px",
             padding: "4px 12px",
             display: "flex",
@@ -41,23 +52,52 @@ export const PopularProductsCard = ({ title, createdBy }) => {
         >
           <FavoriteIcon fontSize="small" />
           <Typography variant="body2" sx={{ fontWeight: "bold" }}>
-            150
+            {likesCount}
           </Typography>
         </Box>
 
         {/* Avatar that overlaps image and content */}
-        <Avatar
-          sx={{
-            position: "absolute",
-            bottom: "-28px",
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "56px",
-            height: "56px",
-            backgroundColor: "#d3d3d3",
-            border: "2px solid white",
-          }}
-        />
+        {dpImgSrc ? (
+          <Box
+            sx={{
+              position: "absolute",
+              bottom: "-28px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "56px",
+              height: "56px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <img
+              src={dpImgSrc}
+              alt=""
+              style={{
+                width: "56px",
+                height: "100%",
+                borderRadius: "50%",
+                border: "2px solid white",
+                objectFit: "cover", // This prevents stretching
+                objectPosition: "center",
+              }}
+            />
+          </Box>
+        ) : (
+          <Avatar
+            sx={{
+              position: "absolute",
+              bottom: "-28px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "56px",
+              height: "56px",
+              backgroundColor: "#d3d3d3",
+              border: "2px solid white",
+            }}
+          />
+        )}
       </Box>
 
       <CardContent

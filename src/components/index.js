@@ -11,7 +11,7 @@ export { OtpFields } from "./InputFiled/InputFiled";
 export { Navbar } from "./Navbar/Navbar";
 export { CustomCart } from "./Cart/Cart";
 export { LiveCard } from "./LiveCard/LiveCard";
-export { TopCreatorsCards } from "./TopCreatorsCards/TopCreatorsCards";
+export { TopCreatorsSlider } from "./TopCreatorsCards/TopCreatorsCards";
 export { CategoryCard } from "./CategoryCard/CategoryCard";
 export { PopularProductsCard } from "./PopularProductsCard/PopularProductsCard";
 export { ChooseUsSection } from "./ChooseUs/ChooseUs";

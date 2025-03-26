@@ -6,7 +6,7 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import theme from "../../utils/theme";
 import { CustomButton, CustomStyleButton } from "../CustomButton/CustomButton";
 
-export const LiveCard = () => {
+export const LiveCard = ({ profileName, productName, price, imgSrc }) => {
   return (
     <Box
       sx={{
@@ -14,7 +14,7 @@ export const LiveCard = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        width: { md: "19%", sm : "40%", xs: "80%" },
+        width: { md: "19%", sm: "40%", xs: "80%" },
         backgroundColor: theme.palette.background.default,
         // color: "white",
         p: 2,
@@ -41,7 +41,7 @@ export const LiveCard = () => {
           {/* <Box sx={{ fontSize: "50px" }}> */}
           <AccountCircleIcon sx={{ fontSize: "40px" }} />
           {/* </Box> */}
-          <Box>Profile Name</Box>
+          <Box>{profileName}</Box>
         </Box>
         <Box>
           <IconButton aria-label="primary">
@@ -56,11 +56,23 @@ export const LiveCard = () => {
           backgroundColor: "lightgray",
           mt: 1,
           borderRadius: 2,
+          overflow: "hidden",
         }}
-      ></Box>
+      >
+        <img
+          src={imgSrc}
+          alt=""
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover", // Maintains aspect ratio and covers the entire box
+            objectPosition: "center",
+          }}
+        />
+      </Box>
       <Box sx={{ width: "100%", display: "flex", flexDirection: "column" }}>
         <Box sx={{ mt: 2, fontSize: "20px", width: "100%", textAlign: "left" }}>
-          Product Name
+          {productName}
         </Box>
         <Box
           sx={{
@@ -72,7 +84,7 @@ export const LiveCard = () => {
             color: theme.palette.primary.main,
           }}
         >
-          100$
+          {price}
         </Box>
         <Box sx={{ mt: 2 }}>
           <CustomStyleButton

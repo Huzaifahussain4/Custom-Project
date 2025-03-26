@@ -12,6 +12,9 @@ import SportsBasketballIcon from "@mui/icons-material/SportsBasketball";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import FlightIcon from "@mui/icons-material/Flight";
 import DevicesIcon from "@mui/icons-material/Devices";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
 
 import {
   CustomButton,
@@ -25,7 +28,8 @@ import {
   LiveCard,
   PopularProductsCard,
   SignupEmailSection,
-  TopCreatorsCards,
+  // TopCreatorsCards,
+  TopCreatorsSlider,
 } from "../../components";
 
 const Home = () => {
@@ -42,6 +46,106 @@ const Home = () => {
     { id: 1, title: "Abstract Attractive", createdBy: "Thomas Cox" },
     { id: 2, title: "Abstract Attractive", createdBy: "Thomas Cox" },
     { id: 3, title: "Abstract Attractive", createdBy: "Thomas Cox" },
+  ];
+
+  const productData = [
+    {
+      productName: "Mirna Aguilar",
+      profileName: "zapateriamona",
+      price: 91800,
+      imageSource:
+        "https://s.500fd.com/tt_author/7347569713821515819~tplv-tiktokx-cropcenter:1080:1080.jpeg",
+    },
+    {
+      productName: "POP MART US SHOP",
+      profileName: "popmart.usshop",
+      price: 100500,
+      imageSource:
+        "https://s.500fd.com/tt_author/723aee863708ff100de7905bea638115~tplv-tiktokx-cropcenter:1080:1080.jpeg",
+    },
+    {
+      productName: "Highland Fashion",
+      profileName: "highland.fashion7",
+      price: 37100,
+      imageSource:
+        "https://s.500fd.com/tt_author/d2edae7ea344cd8f87ce064caf5f2ead~tplv-tiktokx-cropcenter:1080:1080.jpeg",
+    },
+    {
+      productName: "Highland Fashion",
+      profileName: "highland.fashion30",
+      price: 44500,
+      imageSource:
+        "https://s.500fd.com/tt_author/d2edae7ea344cd8f87ce064caf5f2ead~tplv-tiktokx-cropcenter:1080:1080.jpeg",
+    },
+  ];
+
+  const shopData = [
+    {
+      shopName: "Goli Nutrition",
+      rating: 4.6,
+      imgSource:
+        "https://vitaminangels.org/wp-content/uploads/2023/01/Goli_LOGO_1-1-1024x591.png",
+    },
+    {
+      shopName: "medicube",
+      rating: 4.6,
+      imgSource:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3p6zIbTCdXlP5xqP18tGGqAWVsI3pmHT6kA&s",
+    },
+    {
+      shopName: "Gopure",
+      rating: 4.5,
+      imgSource:
+        "https://media.licdn.com/dms/image/v2/D560BAQEbpZGSB4A_uQ/company-logo_200_200/company-logo_200_200/0/1695742169933/gopure_logo?e=2147483647&v=beta&t=lqNikX2IRubhB6lqBLaVgZwOg7pId2377i8dRWr7PtQ",
+    },
+    {
+      shopName: "FaddishDeal",
+      rating: 4.2,
+      imgSource:
+        "https://m.media-amazon.com/images/S/abs-image-upload-na/5/AmazonStores/A21TJRUUN4KGV/997b1d9a25eb0ca766371ca616c7df4b.w3510.h2484.jpg",
+    },
+    {
+      shopName: "Mavwicks",
+      rating: 4.7,
+      imgSource:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnjdd7wlKrU4OrdOfdLhZ1A7GXVfhwixFmcg&s",
+    },
+    {
+      shopName: "Fragrances LLC",
+      rating: 4.6,
+      imgSource:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2lKhoD8J8Lki06tUxQlgDuJJ4T6mig8fUzQ&s",
+    },
+  ];
+
+  const creatorData = [
+    {
+      creatorName: "Khabane Lame",
+      creatorId: "khaby.lame",
+      creatorBannerImg:
+        "https://brandmentions.com/wiki/images/e/ec/Khaby_Lame_.jpg",
+      creatorDpImg:
+        "https://imageio.forbes.com/specials-images/imageserve/6715b6cfad7dcd4696f6aebb/0x0.jpg?format=jpg&crop=1288,1291,x6,y128,safe&height=416&width=416&fit=bounds",
+      likesCount: "187.5K",
+    },
+    {
+      creatorName: "Charli D'Amelio",
+      creatorId: "charlidamelio",
+      creatorBannerImg:
+        "https://www.newbeauty.com/wp-content/uploads/2023/09/charli-damelio-vmas-scaled.jpg",
+      creatorDpImg:
+        "https://yt3.googleusercontent.com/OCf7TwHgiYq7b63U-Js29ThAjjncrMEnRDQ22O6Ki3UNNy9K0UIuHhDxju7rcbVNS6Eylap6xq8=s900-c-k-c0x00ffffff-no-rj",
+      likesCount: "162.3K",
+    },
+    {
+      creatorName: "MrBeast",
+      creatorId: "mrbeast",
+      creatorBannerImg:
+        "https://www.rollingstone.com/wp-content/uploads/2022/04/R1363_MrBeast_1feature.jpg?w=1600&h=900&crop=1",
+      creatorDpImg:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/MrBeast_2023_%28cropped%29.jpg/800px-MrBeast_2023_%28cropped%29.jpg",
+      likesCount: "205.6K",
+    },
   ];
 
   return (
@@ -224,7 +328,7 @@ const Home = () => {
             color: theme.palette.text.primary,
             fontSize: "35px",
             lineHeight: "50px",
-            fontWeight: "800",
+            fontWeight: "bold",
             marginTop: "50px",
             // marginLeft: { sm: "0px", xs: "15px" },
             // marginRight: { sm: "0px", xs: "15px" },
@@ -306,7 +410,7 @@ const Home = () => {
               sx={{
                 color: theme.palette.text.primary,
                 fontSize: "35px",
-                fontWeight: "800",
+                fontWeight: "bold",
 
                 textAlign: { md: "left", sm: "center", xs: "center" },
                 width: { md: "100%", sm: "100%" },
@@ -357,7 +461,6 @@ const Home = () => {
             Explore More
           </Box>
         </Box>
-
         <Box
           sx={{
             width: "100%",
@@ -370,38 +473,20 @@ const Home = () => {
             mt: 4,
           }}
         >
-          <LiveCard
-            sx={{
-              flexBasis: { xs: "100%", sm: "48%", md: "23%" },
-              flexShrink: 0,
-              transition: "all 0.3s ease-in-out",
-              minWidth: "200px",
-            }}
-          />
-          <LiveCard
-            sx={{
-              flexBasis: { xs: "100%", sm: "48%", md: "23%" },
-              flexShrink: 0,
-              transition: "all 0.3s ease-in-out",
-              minWidth: "200px",
-            }}
-          />
-          <LiveCard
-            sx={{
-              flexBasis: { xs: "100%", sm: "48%", md: "23%" },
-              flexShrink: 0,
-              transition: "all 0.3s ease-in-out",
-              minWidth: "200px",
-            }}
-          />
-          <LiveCard
-            sx={{
-              flexBasis: { xs: "100%", sm: "48%", md: "23%" },
-              flexShrink: 0,
-              transition: "all 0.3s ease-in-out",
-              minWidth: "200px",
-            }}
-          />
+          {productData.map((category) => (
+            <LiveCard
+              sx={{
+                flexBasis: { xs: "100%", sm: "48%", md: "23%" },
+                flexShrink: 0,
+                transition: "all 0.3s ease-in-out",
+                minWidth: "200px",
+              }}
+              profileName={category.profileName}
+              productName={category.productName}
+              price={category.price}
+              imgSrc={category.imageSource}
+            />
+          ))}
         </Box>
         <Box
           sx={{
@@ -455,15 +540,14 @@ const Home = () => {
               sx={{
                 color: theme.palette.text.primary,
                 fontSize: "35px",
-                fontWeight: "800",
-
+                fontWeight: "bold",
                 textAlign: { md: "left", sm: "center", xs: "center" },
                 width: { md: "100%", sm: "100%" },
                 // padding: "0px 20px",
                 lineHeight: "30px",
               }}
             >
-              Top Creators
+              Most Promoted Shops
             </Box>
             <Box
               sx={{
@@ -515,33 +599,21 @@ const Home = () => {
             justifyContent: "center",
             alignItems: "center",
             // flexDirection: { md: "row", sm: "column", xs: "column" },
-            flexWrap: "wrap",
-            gap: 3,
+            // flexWrap: "wrap",
+            // gap: 3,
             mt: 4,
           }}
         >
           <Box
             sx={{
-              display: "flex",
-              gap: 3.5,
+              // display: "flex",
+              // gap: 3.5,
               width: "80%",
-              flexWrap: "wrap",
-              justifyContent: "center",
+              // flexWrap: "wrap",
+              // justifyContent: "center",
             }}
           >
-            {categories.map((category) => (
-              <Box
-                sx={{
-                  // width: { xs: "100%", sm: "48%", md: "13%" },
-                  flexBasis: "12%",
-                  flexShrink: 0,
-                  transition: "all 0.3s ease-in-out",
-                  minWidth: "180px",
-                }}
-              >
-                <TopCreatorsCards />
-              </Box>
-            ))}
+            <TopCreatorsSlider shopData={shopData} />
           </Box>
         </Box>
         <Box
@@ -604,7 +676,7 @@ const Home = () => {
                 lineHeight: "30px",
               }}
             >
-              Top Creators
+              Top Categories
             </Box>
             <Box
               sx={{
@@ -738,7 +810,7 @@ const Home = () => {
                 lineHeight: "30px",
               }}
             >
-              Top Creators
+              Trending Creators
             </Box>
             <Box
               sx={{
@@ -796,7 +868,7 @@ const Home = () => {
             flexWrap: "wrap",
           }}
         >
-          {popularProductsCategory.map((category) => (
+          {creatorData.map((category) => (
             <Box
               sx={{
                 flexBasis: "390px",
@@ -808,8 +880,11 @@ const Home = () => {
               }}
             >
               <PopularProductsCard
-                title={category.title}
-                createdBy={category.createdBy}
+                title={category.creatorName}
+                createdBy={category.creatorId}
+                ImgSrc={category.creatorBannerImg}
+                likesCount={category.likesCount}
+                dpImgSrc={category.creatorDpImg}
               />
             </Box>
           ))}
