@@ -1,0 +1,477 @@
+/* Sidebar styling */
+.MuiDrawer-paper {
+  width: 300px !important;
+  /* Sidebar width */
+  background-color: #f4f4f4 !important;
+  position: fixed;
+  top: 92px !important;
+  /* 60px header + 32px gap */
+  left: 0;
+  /* Align to the left of the screen */
+  height: calc(100vh - 92px) !important;
+  /* Adjust height for header + gap */
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  /* Rounded corners */
+  z-index: 1000;
+  /* Ensure it stays on top */
+  overflow-y: auto;
+  /* Allow scrolling inside the sidebar if content overflows */
+}
+
+.thumbnail-container {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+}
+
+.thumbnail-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.avatar-container {
+  display: flex;
+
+}
+
+.avatar-img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+/* Main container styling - exact alignment with sidebar */
+.dashboard-container {
+  /* background-color: #ffffff; */
+  padding: 10px;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  min-height: calc(100vh - 92px);
+  margin-left: 310px;
+  /* Exactly match sidebar width - no extra gap */
+  margin-top: 80px;
+  margin-right: 20px;
+  width: calc(100% - 320px);
+  /* Adjust width to account for sidebar and right margin */
+}
+
+/* Header area with filters */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-bottom: 1.5rem; */
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+  padding: 15px 15px;
+  /* background-color: #105cc6; */
+  /* border-bottom: 1px solid #cfcece; */
+}
+
+/* Date filters section */
+.date-filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  /* Allow wrapping on smaller screens */
+  align-items: center;
+}
+
+/* Individual date filter button */
+.date-option {
+  padding: 5px 15px;
+  font-size: 0.875rem;
+  border: 1px solid #cecece;
+  background-color: #ffffff;
+  color: #23262f;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.date-option:hover {
+  background-color: #e7eff9;
+  color: #105cc6;
+  border-color: #105cc6;
+}
+
+/* Active date filter state */
+.date-option.active {
+  background-color: #e7eff9;
+  border: 1px solid #46b2ff;
+  color: #105cc6;
+}
+
+/* Icon buttons */
+.icon-button {
+  padding: 2px 15px;
+  font-size: 0.875rem;
+  border: 1px solid #cecece;
+  background-color: #ffffff;
+  color: #23262f;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.icon-button:hover {
+  background-color: #e7eff9;
+  color: #105cc6;
+  border-color: #105cc6;
+}
+
+/* Export button */
+.export-button {
+  padding: 2px 15px;
+  font-size: 0.875rem;
+  border: 1px solid #cecece;
+  background-color: #ffffff;
+  color: #23262f;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.export-button:hover {
+  background-color: #e7eff9;
+  color: #105cc6;
+  border-color: #105cc6;
+}
+
+/* Table container - add some depth and move down */
+.table-container {
+  background-color: white;
+  border-radius: 0.5rem;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); */
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 1.5rem;
+  margin-top: 0rem;
+  /* Add margin to move the table down */
+}
+
+/* Make header bold and add spacing */
+.table-header {
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  font-size: 0.75rem;
+  font-weight: 600;
+  /* Make headers bold */
+  color: #105cc6;
+  /* Darker color for better visibility */
+  background-color: #e7eff9;
+  /* Light background to differentiate header */
+  border-bottom: 2px solid #e5e7eb;
+  /* Thicker bottom border */
+  padding: 0.75rem 0.5rem;
+  /* More vertical padding */
+}
+
+.tableTitle {
+  text-align: left !important;
+}
+
+/* Table rows */
+.table-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  font-size: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.2s;
+  padding: 0.75rem 0.5rem;
+  /* Increase padding for better readability */
+}
+
+/* Hover effect on table rows */
+.table-row:hover {
+  background-color: #f9fafb;
+}
+
+/* Column styles */
+.col-1,
+.col-2 {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.col-2 {
+  grid-column: span 2;
+}
+
+/* Text alignment classes */
+.text-left {
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.text-center {
+  text-align: center;
+  justify-content: center;
+}
+
+.text-right {
+  text-align: right;
+  justify-content: flex-end;
+}
+
+/* Header with icon */
+.header-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Utility class for flex alignment */
+.flex-align-center {
+  display: flex;
+  align-items: center;
+}
+
+/* Icon sizes */
+.icon-small {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.25rem;
+}
+
+.icon-tiny {
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-left: 0.25rem;
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.thumbnail-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Thumbnail for stream */
+.thumbnail {
+  width: 40px;
+  height: 40px;
+  background-color: #d1d5db;
+  border-radius: 0.375rem;
+  margin-right: 0.75rem;
+  /* overflow: hidden; */
+}
+
+/* Stream info container */
+.stream-info {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.stream-title {
+  font-weight: 500;
+  font-size: 0.75rem;
+}
+
+.stream-status {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.stream-category {
+  font-size: 0.75rem;
+  color: #105cc6;
+}
+
+/* Creator section */
+.creator-container {
+  display: flex;
+  align-items: center;
+}
+
+.creator-avatar {
+  width: 35px;
+  height: 35px;
+  background-color: #d1d5db;
+  border-radius: 50%;
+  margin-right: 0.75rem;
+}
+
+.creator-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.creator-name {
+  font-weight: 500;
+  font-size: 0.75rem;
+}
+
+.creator-followers {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.creator-country {
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+.country-flag {
+  display: inline-block;
+  width: 1rem;
+  height: 0.75rem;
+  background-color: #46b2ff;
+  margin-right: 0.25rem;
+}
+
+.time-info {
+  font-size: 0.75rem;
+}
+
+/* Star button */
+.star-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.star-button:hover {
+  color: #f59e0b;
+}
+
+/* Free plan message */
+.free-plan-message {
+  padding: 2.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  text-align: center;
+}
+
+.crown-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #105cc6;
+  border-radius: 9999px;
+  position: relative;
+}
+
+.highlight {
+  font-weight: 700;
+}
+
+/* Upgrade button */
+.upgrade-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  background-color: #105cc6;
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.upgrade-button:hover {
+  background-color: #105cc6;
+}
+
+/* Pagination section */
+.pagination-container {
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #e5e7eb;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.page-button {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  background-color: white;
+  color: #6b7280;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.page-button.active {
+  background-color: #105cc6;
+  color: white;
+  border-color: #105cc6;
+}
+
+.page-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ellipsis {
+  color: #6b7280;
+}
+
+.go-to-page {
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-left: 0.5rem;
+}
+
+.page-input {
+  width: 4rem;
+  height: 2rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  text-align: center;
+  font-size: 0.875rem;
+  margin: 0 0.5rem;
+}
+
+/* States for loading and error */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 1rem;
+  color: #ef4444;
+}

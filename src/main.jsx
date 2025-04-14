@@ -13,9 +13,13 @@ import {
   Contact,
   Forgotpassword,
   Home,
+  LiveRank,
+  LiveSearch,
   Login,
   SellerSignup,
   Signup,
+  TiktokLiveProduct,
+  TopLiveCreators,
 } from "./pages/index.js";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import darkBlueTheme from "./utils/theme.jsx";
@@ -32,6 +36,10 @@ const route = createBrowserRouter(
         <Route path="forgot_password" element={<Forgotpassword />} />
         <Route path="contact" element={<Contact />} />
         <Route path="about_us" element={<AboutUs />} />
+        <Route path="live-rank" element={<LiveRank />} />
+        <Route path="live-search" element={<LiveSearch />} />
+        <Route path="tiktok-live-product" element={<TiktokLiveProduct />} />
+        <Route path="top-live-creators" element={<TopLiveCreators />} />
       </Route>
     </>
   )

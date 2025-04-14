@@ -6,3 +6,7 @@ export { default as Forgotpassword } from "./Forgotpassword/Forgotpassword";
 export { default as Home } from "./Home/Home";
 export { default as Contact } from "./Contact/Contact";
 export { default as AboutUs } from "./About/About";
+export { LiveRank } from "./live/LiveRank";
+export { LiveSearch } from "./live/LiveSearch";
+export { TiktokLiveProduct } from "./live/TiktokLiveProduct";
+export { TopLiveCreators } from "./live/TopLiveCreators";

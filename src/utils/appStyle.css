@@ -161,19 +161,19 @@ li.country:hover {
 }
 
 ::-webkit-scrollbar-track {
-    background: #d4e9f4;
+    background: #ECF4E9;
     /* Track (scrollbar background) */
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #ffffff;
+    background: #105cc6;
     /* Scrollbar handle */
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #ffffff;
+    background: #105cc6;
     /* Handle on hover */
 }
 

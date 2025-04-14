@@ -158,13 +158,14 @@ export const SearchField = () => {
       // onSubmit={handleSubmit}
       sx={{
         borderRadius: 3,
-        pl: 2,
+        pl: 1,
         boxShadow: "none",
-        width: { md: "50%", sm: "70%" },
+        width: { md: "100%", sm: "70%" },
         // mr: { sm: 5, md: 50, xs: 2 },
         display: "flex",
         justifyContent: "space-between",
-        bgcolor: "#1a1a1a",
+        bgcolor: theme.palette.background.default,
+        border: "1px solid gray", 
       }}
     >
       <input
@@ -173,16 +174,19 @@ export const SearchField = () => {
         placeholder="Search..."
         className="searchBar"
         style={{
-          padding: "10px",
+          // padding: "10px",
           border: "none",
           outline: "none",
           width: "90%",
-          backgroundColor: "#1a1a1a",
-          color: "white",
+          backgroundColor: theme.palette.background.default,
+          color: theme.palette.text.primary,
           fontSize: "16px",
         }}
       />
-      <IconButton type="submit" sx={{ p: "10px", color: "rgb(145,18,190)" }}>
+      <IconButton
+        type="submit"
+        sx={{ p: "10px", color: theme.palette.primary.main }}
+      >
         <Search />
       </IconButton>
     </Paper>
