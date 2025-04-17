@@ -7,10 +7,10 @@ import {
   Calendar,
   Download,
 } from "lucide-react";
-import "./LiveSearch.css";
+import "./product.css";
 import theme from "../../utils/theme";
 
-export const TopLiveCreators = () => {
+export const VideoProductRank = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -34,7 +34,7 @@ export const TopLiveCreators = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        "http://127.0.0.1:8000/api/Tiktok_Live_Creators/"
+        "http://127.0.0.1:8000/api/Product_Video_Product_Rank/"
       );
 
       if (!response.ok) {
@@ -98,7 +98,7 @@ export const TopLiveCreators = () => {
             color: theme.palette.text.main,
           }}
         >
-          Top Live Creators
+          Video Product Rank
         </div>
         <div className="date-filters">
           {dateOptions.map((option, index) => (
@@ -119,89 +119,72 @@ export const TopLiveCreators = () => {
         </div>
       </div>
 
-      {/* Table with creator columns */}
       <div className="table-container">
         {/* Table Header */}
         <div className="table-header">
-          <div className="col-2 text-left">Creator</div>
-          <div className="col-1 text-left header-with-icon">
-            Number of Fans <ChevronDown className="icon-tiny" />
-          </div>
-          <div className="col-1 text-left header-with-icon">
-            LIVE Units Sold <ChevronDown className="icon-tiny" />
-          </div>
-          <div className="col-1 text-left header-with-icon">
-            LIVE GMV <ChevronDown className="icon-tiny" />
-          </div>
-          <div className="col-1 text-left header-with-icon">
-            No. of Products Sold <ChevronDown className="icon-tiny" />
-          </div>
-          <div className="col-2 text-left">Top GMV LIVE Streaming</div>
+          <div className="col-2 text-left">Promoted Products</div>
+          <div className="col-1 text-left">Video</div>
+          <div className="col-1 text-left">Total Units Sold</div>
+          <div className="col-1 text-left">Total GMV</div>
+          <div className="col-1 text-left">Total Views</div>
+          <div className="col-1 text-left">Total Likes</div>
+          <div className="col-1 text-left">Total Comments</div>
           <div className="col-1 text-center">Action</div>
         </div>
 
         {/* Table Body */}
-        {getPaginatedData().map((row, index) => (
+        {data.map((row, index) => (
           <div key={index} className="table-row">
-            <div className="col-2">
-              <div className="creator-container">
-                <div className="creator-avatar">
-                  <img
-                    src={
-                      row.imageadd ||
-                      "https://products.shureweb.eu/shure_product_db/product_main_images/files/c25/16a/40-/original/ce632827adec4e1842caa762f10e643d.webp"
-                    }
-                    alt="Creator Avatar"
-                    className="avatar-img"
-                  />
+            {/* Promoted Product Info */}
+            <div className="col-2 flex-align-start ">
+              <div className="creator-avatar"></div>
+              <div className="product-info">
+                <div className="product-name">
+                  {row["Product Name"] || "Unnamed Product"}
                 </div>
-                <div className="creator-info">
-                  <div className="creator-name">
-                    {row.Creator || "TheBeachwaver"}
-                  </div>
-                  <div className="creator-id">
-                    ID: {row.CreatorID || "thebeachwaver"}
-                  </div>
-                  <div className="creator-category">
-                    {row.Category || "Shopping & Retail"}
-                  </div>
+                <div className="product-price">
+                  Price: {row["Price"] || "$0"}
+                </div>
+                <div className="product-category">{row["Category"] || "-"}</div>
+              </div>
+            </div>
+
+            {/* Creator/Video Info */}
+            <div className="col-1 ">
+              <div className="creator-avatar"></div>
+              <div className="creator-details">
+                <div className="creator-name">
+                  {row["Creator"] || "Unknown Creator"}
+                </div>
+                <div className="creator-views">
+                  Views: {row["Views"] || "0"}
+                </div>
+                <div className="creator-videos">
+                  48 new shoppable videos in past 7 days
                 </div>
               </div>
             </div>
 
+            {/* Total Units Sold */}
             <div className="col-1 text-left">
-              {row["Number of Fans"] || "1.2m"}
+              {row["Total Units Sold"] || "0"}
             </div>
 
+            {/* Total GMV */}
+            <div className="col-1 text-left">{row["Total GMV"] || "$0"}</div>
+
+            {/* Total Views */}
+            <div className="col-1 text-left">{row["Total Views"] || "0"}</div>
+
+            {/* Total Likes */}
+            <div className="col-1 text-left">{row["Total Likes"] || "0"}</div>
+
+            {/* Total Comments */}
             <div className="col-1 text-left">
-              {row["LIVE Units Sold"] || "1.7k"}
+              {row["Total Comments"] || "0"}
             </div>
 
-            <div className="col-1 text-left">
-              ${row["LIVE GMV"] || "17.1k"}
-            </div>
-
-            <div className="col-1 text-left">
-              {row["No. of Products Sold"] || "41"}
-            </div>
-
-            <div className="col-2">
-              <div className="top-streams">
-                <div className="stream-row">
-                  <span>GMV:</span>
-                  <span className="stream-value">
-                    ${row["Top Stream 1 GMV"] || "334.72"}
-                  </span>
-                </div>
-                <div className="stream-row">
-                  <span>GMV:</span>
-                  <span className="stream-value">
-                    ${row["Top Stream 2 GMV"] || "174.81"}
-                  </span>
-                </div>
-              </div>
-            </div>
-
+            {/* Action */}
             <div className="col-1 text-center">
               <button className="star-button">
                 <Star
@@ -212,6 +195,7 @@ export const TopLiveCreators = () => {
             </div>
           </div>
         ))}
+        {/* </div> */}
 
         {/* Free Plan Message */}
         {data.length === 0 && (

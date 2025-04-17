@@ -14,6 +14,7 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import DownloadIcon from "@mui/icons-material/Download";
 import "./LiveSearch.css";
+import theme from "../../utils/theme";
 
 export const LiveSearch = () => {
   const [data, setData] = useState([]);
@@ -96,7 +97,15 @@ export const LiveSearch = () => {
     <div className="dashboard-container">
       {/* Header */}
       <div className="dashboard-header">
-        <div></div>
+        <div
+          style={{
+            fontSize: "25px",
+            fontWeight: "500",
+            color: theme.palette.text.main,
+          }}
+        >
+          Live Search
+        </div>
         <div className="date-filters">
           {dateOptions.map((option, index) => (
             <button
@@ -125,18 +134,18 @@ export const LiveSearch = () => {
           <div className="col-1 text-left header-with-icon">
             Start Time <KeyboardArrowDownIcon className="icon-tiny" />
           </div>
-          <div className="col-1 text-right header-with-icon">
+          <div className="col-1 text-left header-with-icon">
             Total Viewers <KeyboardArrowDownIcon className="icon-tiny" />
           </div>
           <div className="col-1 text-center">Products</div>
-          <div className="col-1 text-right header-with-icon">
+          <div className="col-1 text-left header-with-icon">
             Total Units Sold <KeyboardArrowDownIcon className="icon-tiny" />
           </div>
-          <div className="col-1 text-right header-with-icon">
+          <div className="col-1 text-left header-with-icon">
             Total GMV <KeyboardArrowDownIcon className="icon-tiny" />
           </div>
-          <div className="col-1 text-right">UV Value</div>
-          <div className="col-1 text-right">Action</div>
+          <div className="col-1 text-left">UV Value</div>
+          <div className="col-1 text-center">Action</div>
         </div>
 
         {/* Table Body */}
@@ -173,7 +182,7 @@ export const LiveSearch = () => {
               </div>
             </div>
 
-            <div className="col-1">
+            <div className="col-1  ">
               <div className="time-info">
                 <div>Start Time: {row["Start Time"] || "N/A"}</div>
                 <div>End Time: {row["End Time"] || "N/A"}</div>
@@ -181,19 +190,17 @@ export const LiveSearch = () => {
               </div>
             </div>
 
-            <div className="col-1 text-right">
-              {row["Total Viewers"] || "0"}
-            </div>
+            <div className="col-1 text-left">{row["Total Viewers"] || "0"}</div>
 
             <div className="col-1 text-center">{row["Products"] || "0"}</div>
 
-            <div className="col-1 text-right">
+            <div className="col-1 text-left">
               {row["Total Units Sold"] || "0"}
             </div>
 
-            <div className="col-1 text-right">{row["Total GMV"] || "$0"}</div>
+            <div className="col-1 text-left">{row["Total GMV"] || "$0"}</div>
 
-            <div className="col-1 text-right">{row["UV Value"] || "$0"}</div>
+            <div className="col-1 text-left">{row["UV Value"] || "$0"}</div>
 
             <div className="col-1 text-center">
               <button className="star-button">

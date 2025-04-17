@@ -10,3 +10,8 @@ export { LiveRank } from "./live/LiveRank";
 export { LiveSearch } from "./live/LiveSearch";
 export { TiktokLiveProduct } from "./live/TiktokLiveProduct";
 export { TopLiveCreators } from "./live/TopLiveCreators";
+export { ProductSearch } from "./product/ProductSearch";
+export { MostPromoted } from "./product/MostPromoted";
+export { NewListed } from "./product/NewListed";
+export { TopSelling } from "./product/TopSelling";
+export { VideoProductRank } from "./product/VideoProductRank";

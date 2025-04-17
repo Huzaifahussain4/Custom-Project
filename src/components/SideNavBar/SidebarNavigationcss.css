@@ -19,6 +19,9 @@
   min-width: 40px !important;
 }
 
+.MuiButtonBase-root-MuiListItemButton-root.Mui-selected{
+  background-color: #333;
+}
 
 /* .MuiCollapse-root {
   width: 95% !important;

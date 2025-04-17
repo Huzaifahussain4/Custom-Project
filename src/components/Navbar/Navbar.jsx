@@ -216,9 +216,19 @@ export const Navbar = () => {
           <MenuItem onClick={() => handleMenuClose({ path: "/live-rank" })}>
             Live Rank
           </MenuItem>
-          <MenuItem onClick={handleMenuClose}>Live Search</MenuItem>
-          <MenuItem onClick={handleMenuClose}>Tiktok Live Product</MenuItem>
-          <MenuItem onClick={handleMenuClose}>Top Live Creators</MenuItem>
+          <MenuItem onClick={() => handleMenuClose({ path: "/live-search" })}>
+            Live Search
+          </MenuItem>
+          <MenuItem
+            onClick={() => handleMenuClose({ path: "/tiktok-live-product" })}
+          >
+            Tiktok Live Product
+          </MenuItem>
+          <MenuItem
+            onClick={() => handleMenuClose({ path: "/top-live-creators" })}
+          >
+            Top Live Creators
+          </MenuItem>
         </Menu>
         {/* Profile Dropdown */}
         {token ? (

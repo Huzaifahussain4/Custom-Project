@@ -24,6 +24,7 @@ const App = () => {
     "/top-live-creators",
   ];
   const noSecondNavBarRoutes = ["/", "/about_us", "/contact"];
+
   const noSideNavBarRoutes = [
     "/signup",
     "/emailverification",
@@ -46,6 +47,11 @@ const App = () => {
     "/live-search",
     "/tiktok-live-product",
     "/top-live-creators",
+    "/product-search",
+    "/most-promoted-product",
+    "/new-listed",
+    "/top-selling",
+    "/Video-Product-Rank",
   ];
   return (
     <>

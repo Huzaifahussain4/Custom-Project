@@ -184,18 +184,9 @@ export const SideNavBar = () => {
               sx={{ pl: 4 }}
               selected={location.pathname === "product-search"}
             >
-              <ListItemIcon>
-                <SearchIcon />
-              </ListItemIcon>
+              <SearchIcon sx={{ mr: 2 }} />
               <ListItemText primary="Product Search" />
             </ListItemButton>
-
-            {/* <ListItemButton sx={{ pl: 1 }}>
-              <ListItemIcon>
-                <SearchIcon />
-              </ListItemIcon>
-              <ListItemText primary="Product Search" />
-            </ListItemButton> */}
 
             <ListItemButton
               component={Link}
@@ -203,9 +194,7 @@ export const SideNavBar = () => {
               sx={{ pl: 1 }}
               selected={location.pathname === "top-selling"}
             >
-              <ListItemIcon>
-                <NewIcon />
-              </ListItemIcon>
+              <NewIcon sx={{ mr: 2 }} />
               <ListItemText primary="Top Selling" />
             </ListItemButton>
 
@@ -215,56 +204,29 @@ export const SideNavBar = () => {
               sx={{ pl: 1 }}
               selected={location.pathname === "new-listed"}
             >
-              <ListItemIcon>
-                <MarketIcon />
-              </ListItemIcon>
+              <MarketIcon sx={{ mr: 2 }} />
               <ListItemText primary="New Listed" />
             </ListItemButton>
 
-            {/* <ListItemButton sx={{ pl: 1 }}>
-              <ListItemIcon>
-                <NewIcon />
-              </ListItemIcon>
-              <ListItemText primary="New Listed" />
-            </ListItemButton> */}
-
             <ListItemButton
               component={Link}
-              to="mostpromoted-product"
+              to="most-promoted-product"
               sx={{ pl: 1 }}
               selected={location.pathname === "mostpromoted-product"}
             >
-              <ListItemIcon>
-                <PromotedIcon />
-              </ListItemIcon>
+              <PromotedIcon sx={{ mr: 2 }} />
               <ListItemText primary="Most Promoted" />
             </ListItemButton>
-
-            {/* <ListItemButton sx={{ pl: 1 }}>
-              <ListItemIcon>
-                <PromotedIcon />
-              </ListItemIcon>
-              <ListItemText primary="Most Promoted" />
-            </ListItemButton> */}
 
             <ListItemButton
               component={Link}
-              to="VideoProduct-Rank"
+              to="Video-Product-Rank"
               sx={{ pl: 1 }}
               selected={location.pathname === "VideoProduct-Rank"}
             >
-              <ListItemIcon>
-                <VideoIcon />
-              </ListItemIcon>
+              <VideoIcon sx={{ mr: 2 }} />
               <ListItemText primary="Video Product Rank" />
             </ListItemButton>
-
-            {/* <ListItemButton sx={{ pl: 1 }}>
-              <ListItemIcon>
-                <VideoIcon />
-              </ListItemIcon>
-              <ListItemText primary="Video Product Rank" />
-            </ListItemButton> */}
           </List>
         </Collapse>
 

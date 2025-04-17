@@ -7,10 +7,10 @@ import {
   Calendar,
   Download,
 } from "lucide-react";
-import "./LiveSearch.css";
+import "../live/LiveSearch.css";
 import theme from "../../utils/theme";
 
-export const TopLiveCreators = () => {
+export const ProductSearch = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -34,7 +34,7 @@ export const TopLiveCreators = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        "http://127.0.0.1:8000/api/Tiktok_Live_Creators/"
+        "http://127.0.0.1:8000/api/Product_Prodcut_Search/"
       );
 
       if (!response.ok) {
@@ -98,7 +98,7 @@ export const TopLiveCreators = () => {
             color: theme.palette.text.main,
           }}
         >
-          Top Live Creators
+          Product Search
         </div>
         <div className="date-filters">
           {dateOptions.map((option, index) => (
@@ -119,99 +119,88 @@ export const TopLiveCreators = () => {
         </div>
       </div>
 
-      {/* Table with creator columns */}
       <div className="table-container">
         {/* Table Header */}
-        <div className="table-header">
-          <div className="col-2 text-left">Creator</div>
-          <div className="col-1 text-left header-with-icon">
-            Number of Fans <ChevronDown className="icon-tiny" />
+        <div className="table-container">
+          {/* Table Header */}
+          <div className="table-header">
+            <div className="col-1 text-left">Products</div>
+            <div className="col-1 text-left">Shop</div>
+            <div className="col-1 text-left">Commission Rate</div>
+            <div className="col-1 text-left">Units Sold <br/>(7-day)</div>
+            <div className="col-1 text-left">GMV (7-day)</div>
+            <div className="col-1 text-left">Total Units Sold</div>
+            <div className="col-1 text-left">Total GMV</div>
+            <div className="col-1 text-left">Affiliates</div>
+            <div className="col-1 text-center">Action</div>
           </div>
-          <div className="col-1 text-left header-with-icon">
-            LIVE Units Sold <ChevronDown className="icon-tiny" />
-          </div>
-          <div className="col-1 text-left header-with-icon">
-            LIVE GMV <ChevronDown className="icon-tiny" />
-          </div>
-          <div className="col-1 text-left header-with-icon">
-            No. of Products Sold <ChevronDown className="icon-tiny" />
-          </div>
-          <div className="col-2 text-left">Top GMV LIVE Streaming</div>
-          <div className="col-1 text-center">Action</div>
+
+          {/* Table Body */}
+          {getPaginatedData().map((row, index) => (
+            <div key={index} className="table-row">
+              {/* Product Info */}
+              <div className="col-1 flex-align-start">
+                <div className="creator-avatar"></div>
+                <div className="product-info">
+                  <div className="product-name">
+                    {row["Product"] || "Unnamed Product"}
+                  </div>
+                  <div className="product-price">
+                    Price: {row["Price Range"] || "$0"}
+                  </div>
+                  <div className="product-category">
+                    {row["Category"] || "N/A"}
+                  </div>
+                </div>
+              </div>
+              {/* Shop Info */}
+              <div className="col-1 shopContainer">
+                <div className="shop-name">{row["Shop"] || "Unknown Shop"}</div>
+                <div className="shop-units">
+                  Units Sold: {row["Shop Units Sold"] || "0"}
+                </div>
+              </div>
+
+              {/* Commission Rate */}
+              <div className="col-1 text-center">
+                {row["Commission Rate"] || "0%"}
+              </div>
+
+              {/* Units Sold (7-day) */}
+              <div className="col-1 text-left">
+                {row["Units Sold (7-day)"] || "0"}
+              </div>
+
+              {/* GMV (7-day) */}
+              <div className="col-1 text-left">
+                {row["GMV (7-day)"] || "$0"}
+              </div>
+
+              {/* Total Units Sold */}
+              <div className="col-1 text-left">
+                {row["Total Units Sold"] || "0"}
+              </div>
+
+              {/* Total GMV */}
+              <div className="col-1 text-left">{row["Total GMV"] || "$0"}</div>
+
+              {/* Affiliates */}
+              <div className="col-1 text-left">{row["Affiliates"] || "0"}</div>
+
+              {/* Action */}
+              <div className="col-1 text-center">
+                <button className="star-button">
+                  <Star
+                    className="icon"
+                    fill={row.starred ? "#FFD700" : "none"}
+                  />
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
 
-        {/* Table Body */}
-        {getPaginatedData().map((row, index) => (
-          <div key={index} className="table-row">
-            <div className="col-2">
-              <div className="creator-container">
-                <div className="creator-avatar">
-                  <img
-                    src={
-                      row.imageadd ||
-                      "https://products.shureweb.eu/shure_product_db/product_main_images/files/c25/16a/40-/original/ce632827adec4e1842caa762f10e643d.webp"
-                    }
-                    alt="Creator Avatar"
-                    className="avatar-img"
-                  />
-                </div>
-                <div className="creator-info">
-                  <div className="creator-name">
-                    {row.Creator || "TheBeachwaver"}
-                  </div>
-                  <div className="creator-id">
-                    ID: {row.CreatorID || "thebeachwaver"}
-                  </div>
-                  <div className="creator-category">
-                    {row.Category || "Shopping & Retail"}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-1 text-left">
-              {row["Number of Fans"] || "1.2m"}
-            </div>
-
-            <div className="col-1 text-left">
-              {row["LIVE Units Sold"] || "1.7k"}
-            </div>
-
-            <div className="col-1 text-left">
-              ${row["LIVE GMV"] || "17.1k"}
-            </div>
-
-            <div className="col-1 text-left">
-              {row["No. of Products Sold"] || "41"}
-            </div>
-
-            <div className="col-2">
-              <div className="top-streams">
-                <div className="stream-row">
-                  <span>GMV:</span>
-                  <span className="stream-value">
-                    ${row["Top Stream 1 GMV"] || "334.72"}
-                  </span>
-                </div>
-                <div className="stream-row">
-                  <span>GMV:</span>
-                  <span className="stream-value">
-                    ${row["Top Stream 2 GMV"] || "174.81"}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-1 text-center">
-              <button className="star-button">
-                <Star
-                  className="icon"
-                  fill={row.starred ? "#FFD700" : "none"}
-                />
-              </button>
-            </div>
-          </div>
-        ))}
+        {/* </div> */}
 
         {/* Free Plan Message */}
         {data.length === 0 && (
