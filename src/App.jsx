@@ -52,6 +52,14 @@ const App = () => {
     "/new-listed",
     "/top-selling",
     "/Video-Product-Rank",
+    "/creator-search",
+    "/ecommerce-rank",
+    "/growth-rank",
+    "/trending-rank",
+    "/verified-rank",
+    "/shop-search",
+    "/shop-rank",
+    "/most-promotedshop",
   ];
   return (
     <>

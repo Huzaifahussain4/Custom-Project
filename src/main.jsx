@@ -11,7 +11,10 @@ import { RouterProvider } from "react-router-dom";
 import {
   AboutUs,
   Contact,
+  CreatorSearch,
+  EcommerceRank,
   Forgotpassword,
+  GrowthRank,
   Home,
   LiveRank,
   LiveSearch,
@@ -20,10 +23,15 @@ import {
   NewListed,
   ProductSearch,
   SellerSignup,
+  ShopMostPromoted,
+  ShopRank,
+  ShopSearch,
   Signup,
   TiktokLiveProduct,
   TopLiveCreators,
   TopSelling,
+  TrendingCreators,
+  VerifiedCreatorRank,
   VideoProductRank,
 } from "./pages/index.js";
 import { CssBaseline, ThemeProvider } from "@mui/material";
@@ -50,6 +58,14 @@ const route = createBrowserRouter(
         <Route path="new-listed" element={<NewListed />} />
         <Route path="top-selling" element={<TopSelling />} />
         <Route path="Video-Product-Rank" element={<VideoProductRank />} />
+        <Route path="creator-search" element={<CreatorSearch />} />
+        <Route path="ecommerce-rank" element={<EcommerceRank />} />
+        <Route path="growth-rank" element={<GrowthRank />} />
+        <Route path="trending-rank" element={<TrendingCreators />} />
+        <Route path="verified-rank" element={<VerifiedCreatorRank />} />
+        <Route path="shop-search" element={<ShopSearch />} />
+        <Route path="shop-rank" element={<ShopRank />} />
+        <Route path="most-promotedshop" element={<ShopMostPromoted />} />
       </Route>
     </>
   )

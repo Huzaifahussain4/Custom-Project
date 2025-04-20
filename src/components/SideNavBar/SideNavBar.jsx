@@ -252,9 +252,9 @@ export const SideNavBar = () => {
               sx={{ pl: 1 }}
               selected={location.pathname === "/creator-search"}
             >
-              <ListItemIcon>
-                <SearchIcon />
-              </ListItemIcon>
+              {/* <ListItemIcon> */}
+              <SearchIcon sx={{ mr: 2 }} />
+              {/* </ListItemIcon> */}
               <ListItemText primary="Creator Search" />
             </ListItemButton>
 
@@ -264,9 +264,9 @@ export const SideNavBar = () => {
               sx={{ pl: 1 }}
               selected={location.pathname === "/growth-rank"}
             >
-              <ListItemIcon>
-                <SearchIcon />
-              </ListItemIcon>
+              {/* <ListItemIcon> */}
+              <SearchIcon sx={{ mr: 2 }} />
+              {/* </ListItemIcon> */}
               <ListItemText primary="Growth Rank" />
             </ListItemButton>
 
@@ -276,9 +276,9 @@ export const SideNavBar = () => {
               sx={{ pl: 1 }}
               selected={location.pathname === "/ecommerce-rank"}
             >
-              <ListItemIcon>
-                <SearchIcon />
-              </ListItemIcon>
+              {/* <ListItemIcon> */}
+              <SearchIcon sx={{ mr: 2 }} />
+              {/* </ListItemIcon> */}
               <ListItemText primary="Ecommerce Rank" />
             </ListItemButton>
 
@@ -288,9 +288,9 @@ export const SideNavBar = () => {
               sx={{ pl: 1 }}
               selected={location.pathname === "/verified-rank"}
             >
-              <ListItemIcon>
-                <SearchIcon />
-              </ListItemIcon>
+              {/* <ListItemIcon> */}
+              <SearchIcon sx={{ mr: 2 }} />
+              {/* </ListItemIcon> */}
               <ListItemText primary="Verified Rank" />
             </ListItemButton>
 
@@ -300,9 +300,9 @@ export const SideNavBar = () => {
               sx={{ pl: 1 }}
               selected={location.pathname === "trending-rank"}
             >
-              <ListItemIcon>
-                <SearchIcon />
-              </ListItemIcon>
+              {/* <ListItemIcon> */}
+              <SearchIcon sx={{ mr: 2 }} />
+              {/* </ListItemIcon> */}
               <ListItemText primary="Trending Rank" />
             </ListItemButton>
           </List>
@@ -326,9 +326,9 @@ export const SideNavBar = () => {
               sx={{ pl: 1 }}
               selected={location.pathname === "shop-search"}
             >
-              <ListItemIcon>
-                <SearchIcon />
-              </ListItemIcon>
+              {/* <ListItemIcon> */}
+              <SearchIcon sx={{ mr: 2 }} />
+              {/* </ListItemIcon> */}
               <ListItemText primary="Shop Search" />
             </ListItemButton>
 
@@ -338,37 +338,23 @@ export const SideNavBar = () => {
               sx={{ pl: 1 }}
               selected={location.pathname === "shop-rank"}
             >
-              <ListItemIcon>
-                <RankIcon />
-              </ListItemIcon>
+              {/* <ListItemIcon> */}
+              <RankIcon sx={{ mr: 2 }} />
+              {/* </ListItemIcon> */}
               <ListItemText primary="Shop Rank" />
             </ListItemButton>
 
-            {/* <ListItemButton sx={{ pl: 1 }}>
-              <ListItemIcon>
-              <SearchIcon />
-              </ListItemIcon>
-              <ListItemText primary="Shop Search" />
-            </ListItemButton> */}
             <ListItemButton
               component={Link}
               to="most-promotedshop"
               sx={{ pl: 1 }}
               selected={location.pathname === "most-promotedshop"}
             >
-              <ListItemIcon>
-                <PromotedIcon />
-              </ListItemIcon>
+              {/* <ListItemIcon> */}
+              <PromotedIcon sx={{ mr: 2 }} />
+              {/* </ListItemIcon> */}
               <ListItemText primary="Shop Promoted" />
             </ListItemButton>
-
-            {/* 
-            <ListItemButton sx={{ pl: 1 }}>
-              <ListItemIcon>
-                <PromotedIcon />
-              </ListItemIcon>
-              <ListItemText primary="Most Promoted" />
-            </ListItemButton> */}
           </List>
         </Collapse>
 
@@ -385,15 +371,15 @@ export const SideNavBar = () => {
         <Collapse in={openMenus.ai} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             <ListItemButton sx={{ pl: 1 }}>
-              <ListItemIcon>
-                <MarketingIcon />
-              </ListItemIcon>
+              {/* <ListItemIcon> */}
+              <MarketingIcon sx={{ mr: 2 }} />
+              {/* </ListItemIcon> */}
               <ListItemText primary="Marketing Agent" />
             </ListItemButton>
             <ListItemButton sx={{ pl: 1 }}>
-              <ListItemIcon>
-                <BusinessIcon />
-              </ListItemIcon>
+              {/* <ListItemIcon> */}
+              <BusinessIcon sx={{ mr: 2 }} />
+              {/* </ListItemIcon> */}
               <ListItemText primary="Business Agent" />
             </ListItemButton>
           </List>
