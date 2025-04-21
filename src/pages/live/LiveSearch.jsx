@@ -15,6 +15,7 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import DownloadIcon from "@mui/icons-material/Download";
 import "./LiveSearch.css";
 import theme from "../../utils/theme";
+import { KpiCard } from "../../components";
 
 export const LiveSearch = () => {
   const [data, setData] = useState([]);
@@ -93,9 +94,41 @@ export const LiveSearch = () => {
   if (loading) return <div className="loading">Loading data...</div>;
   if (error) return <div className="error">{error}</div>;
 
+  const KPIData = [
+    {
+      id: "1",
+      percent: "2.5%",
+      amount: "Gaming",
+      color: "#00c853",
+      title: "Category",
+    },
+    {
+      id: "2",
+      percent: "-5%",
+      amount: "8,570",
+      color: "#d50000",
+      title: "Total GMV",
+    },
+    {
+      id: "3",
+      percent: "6%",
+      amount: "2,370",
+      color: "#00c853",
+      title: "UV Value",
+    },
+    {
+      id: "4",
+      percent: "-2.5%",
+      amount: "92,160",
+      color: "#d50000",
+      title: "Unit Sold",
+    },
+  ];
+
   return (
     <div className="dashboard-container">
       {/* Header */}
+
       <div className="dashboard-header">
         <div
           style={{
@@ -123,6 +156,25 @@ export const LiveSearch = () => {
             <span>Data Export</span>
           </button>
         </div>
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginBottom: "20px",
+        }}
+      >
+        {KPIData.map((item) => (
+          <KpiCard
+            key={item.id}
+            percent={item.percent}
+            amount={item.amount}
+            strokeColor={item.color}
+            id={item.id}
+            title={item.title}
+          />
+        ))}
       </div>
 
       {/* Table */}

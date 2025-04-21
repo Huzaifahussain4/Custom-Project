@@ -22,3 +22,4 @@ export { Footer } from "./Footer/Footer";
 export { TeamMember } from "./TeamMemberCard/TeamMemberCard";
 export { TeamSection } from "./TeamSection/TeamSection";
 export { SideNavBar } from "./SideNavBar/SideNavBar";
+export { KpiCard } from "./KpiCard/KpiCard";
