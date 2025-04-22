@@ -13,9 +13,11 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import DownloadIcon from "@mui/icons-material/Download";
+import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import "./LiveSearch.css";
 import theme from "../../utils/theme";
 import { KpiCard } from "../../components";
+import { icon } from "@fortawesome/fontawesome-svg-core";
 
 export const LiveSearch = () => {
   const [data, setData] = useState([]);
@@ -101,6 +103,7 @@ export const LiveSearch = () => {
       amount: "Gaming",
       color: "#00c853",
       title: "Category",
+      icon: <CategoryOutlinedIcon />,
     },
     {
       id: "2",
@@ -108,6 +111,7 @@ export const LiveSearch = () => {
       amount: "8,570",
       color: "#d50000",
       title: "Total GMV",
+      icon: <CategoryOutlinedIcon />,
     },
     {
       id: "3",
@@ -115,6 +119,7 @@ export const LiveSearch = () => {
       amount: "2,370",
       color: "#00c853",
       title: "UV Value",
+      icon: <CategoryOutlinedIcon />,
     },
     {
       id: "4",
@@ -122,6 +127,7 @@ export const LiveSearch = () => {
       amount: "92,160",
       color: "#d50000",
       title: "Unit Sold",
+      icon: <CategoryOutlinedIcon />,
     },
   ];
 
@@ -161,12 +167,16 @@ export const LiveSearch = () => {
       <div
         style={{
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "center",
+          gap: "15px",
+          alignItems: "center",
           marginBottom: "20px",
+          flexWrap: "wrap",
         }}
       >
         {KPIData.map((item) => (
           <KpiCard
+            icon={item.icon}
             key={item.id}
             percent={item.percent}
             amount={item.amount}

@@ -217,3 +217,7 @@ input[type="number"] {
 .MuiRating-icon>svg {
     width: 20px !important;
 }
+
+.css-127evc8-MuiCardContent-root{
+    padding: 0px !important;
+}
