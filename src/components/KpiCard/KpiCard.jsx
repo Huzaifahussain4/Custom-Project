@@ -11,7 +11,17 @@ const data = [
   { value: 4502 },
 ];
 
-export const KpiCard = ({ title, percent, amount, strokeColor, id, icon }) => {
+export const KpiCard = ({
+  category,
+  percent,
+  amount,
+  strokeColor,
+  id,
+  icon,
+  bgColor,
+  fcolor,
+  graphData,
+}) => {
   const gradientId = `gradient-${id}`;
 
   return (
@@ -20,8 +30,9 @@ export const KpiCard = ({ title, percent, amount, strokeColor, id, icon }) => {
       sx={{
         width: 285,
         maxWidth: 300,
-        borderRadius: 2,
+        borderRadius: 3,
         p: 1,
+        backgroundColor: bgColor,
         // display: "flex",
         // justifyContent: "center",
         // alignItems: "center",
@@ -49,20 +60,18 @@ export const KpiCard = ({ title, percent, amount, strokeColor, id, icon }) => {
                 fontSize: 17, // For font-based icons
                 width: 18, // For SVG icons
                 height: 18,
-                color: theme.palette.text.secondary,
+                // color: theme.palette.text.secondary,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
               }}
+              color={fcolor}
             >
               {React.cloneElement(icon, { fontSize: "18px" })}
             </Box>
 
-            <Typography
-              variant="subtitle1"
-              sx={{ color: theme.palette.text.secondary }}
-            >
-              {title}
+            <Typography variant="subtitle1" color={fcolor}>
+              {category}
             </Typography>
           </Box>
           <Typography style={{ fontSize: 13 }} color={strokeColor}>
@@ -80,7 +89,7 @@ export const KpiCard = ({ title, percent, amount, strokeColor, id, icon }) => {
           }}
         >
           <Box>
-            <Typography sx={{ fontWeight: 600, fontSize: 30 }}>
+            <Typography color={fcolor} sx={{ fontWeight: 600, fontSize: 30 }}>
               {amount}
             </Typography>
           </Box>
@@ -95,32 +104,34 @@ export const KpiCard = ({ title, percent, amount, strokeColor, id, icon }) => {
               paddingBottom: 0,
             }}
           >
-            <ResponsiveContainer width="100%" height="200%">
-              <AreaChart data={data}>
-                <defs>
-                  <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-                    <stop
-                      offset="0%"
-                      stopColor={strokeColor}
-                      stopOpacity={0.4}
-                    />
-                    <stop
-                      offset="100%"
-                      stopColor={strokeColor}
-                      stopOpacity={0}
-                    />
-                  </linearGradient>
-                </defs>
-                <Area
-                  type="natural"
-                  dataKey="value"
-                  stroke={strokeColor}
-                  fillOpacity={1}
-                  fill={`url(#${gradientId})`}
-                  strokeWidth={2}
-                />
-              </AreaChart>
-            </ResponsiveContainer>
+            {graphData === true && (
+              <ResponsiveContainer width="100%" height="200%">
+                <AreaChart data={data}>
+                  <defs>
+                    <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
+                      <stop
+                        offset="0%"
+                        stopColor={strokeColor}
+                        stopOpacity={0.4}
+                      />
+                      <stop
+                        offset="100%"
+                        stopColor={strokeColor}
+                        stopOpacity={0}
+                      />
+                    </linearGradient>
+                  </defs>
+                  <Area
+                    type="natural"
+                    dataKey="value"
+                    stroke={strokeColor}
+                    fillOpacity={1}
+                    fill={`url(#${gradientId})`}
+                    strokeWidth={2}
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            )}
           </Box>
         </Box>
       </CardContent>

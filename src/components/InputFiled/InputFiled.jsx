@@ -139,7 +139,7 @@ export function CustomFiled({ typeValue, placeholderValue, onChange }) {
   );
 }
 
-export const SearchField = () => {
+export const SearchField = ({ borderColor, bgcolor, padding }) => {
   // const [searchTerm, setSearchTerm] = useState("");
 
   // const navigate = useNavigate();
@@ -164,8 +164,9 @@ export const SearchField = () => {
         // mr: { sm: 5, md: 50, xs: 2 },
         display: "flex",
         justifyContent: "space-between",
-        bgcolor: theme.palette.background.default,
-        border: "1px solid gray", 
+        bgcolor: bgcolor,
+        border: "1px solid",
+        borderColor: { borderColor },
       }}
     >
       <input
@@ -178,14 +179,14 @@ export const SearchField = () => {
           border: "none",
           outline: "none",
           width: "90%",
-          backgroundColor: theme.palette.background.default,
+          backgroundColor: bgcolor,
           color: theme.palette.text.primary,
           fontSize: "16px",
         }}
       />
       <IconButton
         type="submit"
-        sx={{ p: "10px", color: theme.palette.primary.main }}
+        sx={{ p: padding, color: theme.palette.primary.main }}
       >
         <Search />
       </IconButton>

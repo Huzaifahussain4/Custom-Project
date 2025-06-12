@@ -123,7 +123,7 @@ export const TopLiveCreators = () => {
       <div className="table-container">
         {/* Table Header */}
         <div className="table-header">
-          <div className="col-2 text-left">Creator</div>
+          <div className="col-1 text-left">Creator</div>
           <div className="col-1 text-left header-with-icon">
             Number of Fans <ChevronDown className="icon-tiny" />
           </div>
@@ -136,14 +136,14 @@ export const TopLiveCreators = () => {
           <div className="col-1 text-left header-with-icon">
             No. of Products Sold <ChevronDown className="icon-tiny" />
           </div>
-          <div className="col-2 text-left">Top GMV LIVE Streaming</div>
-          <div className="col-1 text-center">Action</div>
+          <div className="col-1 text-left">Top GMV LIVE Streaming</div>
+          {/* <div className="col-1 text-center">Action</div> */}
         </div>
 
         {/* Table Body */}
         {getPaginatedData().map((row, index) => (
           <div key={index} className="table-row">
-            <div className="col-2">
+            <div className="col-1">
               <div className="creator-container">
                 <div className="creator-avatar">
                   <img
@@ -185,7 +185,7 @@ export const TopLiveCreators = () => {
               {row["No. of Products Sold"] || "41"}
             </div>
 
-            <div className="col-2">
+            <div className="col-1">
               <div className="top-streams">
                 <div className="stream-row">
                   <span>GMV:</span>
@@ -202,14 +202,14 @@ export const TopLiveCreators = () => {
               </div>
             </div>
 
-            <div className="col-1 text-center">
+            {/* <div className="col-1 text-center">
               <button className="star-button">
                 <Star
                   className="icon"
                   fill={row.starred ? "#FFD700" : "none"}
                 />
               </button>
-            </div>
+            </div> */}
           </div>
         ))}
 

@@ -23,3 +23,4 @@ export { TeamMember } from "./TeamMemberCard/TeamMemberCard";
 export { TeamSection } from "./TeamSection/TeamSection";
 export { SideNavBar } from "./SideNavBar/SideNavBar";
 export { KpiCard } from "./KpiCard/KpiCard";
+export { CategoryRevenueChart } from "./Charts/Charts";

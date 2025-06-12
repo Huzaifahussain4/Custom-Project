@@ -16,24 +16,19 @@ import DownloadIcon from "@mui/icons-material/Download";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import "./LiveSearch.css";
 import theme from "../../utils/theme";
-import { KpiCard } from "../../components";
+import { CategoryRevenueChart, KpiCard, SearchField } from "../../components";
 import { icon } from "@fortawesome/fontawesome-svg-core";
 
 export const LiveSearch = () => {
   const [data, setData] = useState([]);
+  console.log("🚀 ~ LiveSearch ~ data:", data);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const itemsPerPage = 10;
 
-  const dateOptions = [
-    "Last 7 days",
-    "Last 28 days",
-    "Last 90 days",
-    "2025-03-29",
-    "2025-04-05",
-  ];
+  const dateOptions = ["Last 7 days", "Last 28 days", "Last 90 days"];
 
   useEffect(() => {
     fetchData();
@@ -45,6 +40,7 @@ export const LiveSearch = () => {
       const response = await fetch(
         "http://127.0.0.1:8000/api/Tiktok_Live_Search/"
       );
+      console.log("🚀 ~ fetchData ~ response:", response);
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -101,9 +97,12 @@ export const LiveSearch = () => {
       id: "1",
       percent: "2.5%",
       amount: "Gaming",
-      color: "#00c853",
+      color: theme.palette.secondary.main,
       title: "Category",
       icon: <CategoryOutlinedIcon />,
+      bgColor: theme.palette.primary.main,
+      fcolor: "#fff",
+      graphData: false,
     },
     {
       id: "2",
@@ -112,6 +111,8 @@ export const LiveSearch = () => {
       color: "#d50000",
       title: "Total GMV",
       icon: <CategoryOutlinedIcon />,
+      bgColor: "#fff",
+      graphData: true,
     },
     {
       id: "3",
@@ -120,6 +121,8 @@ export const LiveSearch = () => {
       color: "#00c853",
       title: "UV Value",
       icon: <CategoryOutlinedIcon />,
+      bgColor: "#fff",
+      graphData: true,
     },
     {
       id: "4",
@@ -128,6 +131,8 @@ export const LiveSearch = () => {
       color: "#d50000",
       title: "Unit Sold",
       icon: <CategoryOutlinedIcon />,
+      bgColor: "#fff",
+      graphData: true,
     },
   ];
 
@@ -146,6 +151,13 @@ export const LiveSearch = () => {
           Live Search
         </div>
         <div className="date-filters">
+          <div>
+            <SearchField
+              borderColor={theme.palette.secondary.main}
+              bgcolor={theme.palette.greenBg.main}
+              padding="3px 10px"
+            />
+          </div>
           {dateOptions.map((option, index) => (
             <button
               key={index}
@@ -155,10 +167,13 @@ export const LiveSearch = () => {
             </button>
           ))}
           <button className="icon-button">
-            <CalendarMonthIcon className="icon-small" />
+            <CalendarMonthIcon
+              className="icon-small"
+              sx={{ fontSize: "20px" }}
+            />
           </button>
           <button className="export-button">
-            <DownloadIcon className="icon-small" />
+            <DownloadIcon className="icon-small" sx={{ fontSize: "20px" }} />
             <span>Data Export</span>
           </button>
         </div>
@@ -182,9 +197,16 @@ export const LiveSearch = () => {
             amount={item.amount}
             strokeColor={item.color}
             id={item.id}
-            title={item.title}
+            category={item.title}
+            bgColor={item.bgColor}
+            fcolor={item.fcolor}
+            graphData={item.graphData}
           />
         ))}
+      </div>
+
+      <div style={{ marginBottom: "20px", width: "100%" }}>
+        <CategoryRevenueChart />
       </div>
 
       {/* Table */}
@@ -193,13 +215,13 @@ export const LiveSearch = () => {
         <div className="table-header">
           <div className="col-1 text-left">Live</div>
           <div className="col-1 text-left">Creator Info</div>
-          <div className="col-1 text-left header-with-icon">
+          {/* <div className="col-1 text-left header-with-icon">
             Start Time <KeyboardArrowDownIcon className="icon-tiny" />
-          </div>
+          </div> */}
           <div className="col-1 text-left header-with-icon">
             Total Viewers <KeyboardArrowDownIcon className="icon-tiny" />
           </div>
-          <div className="col-1 text-center">Products</div>
+          {/* <div className="col-1 text-center">Products</div> */}
           <div className="col-1 text-left header-with-icon">
             Total Units Sold <KeyboardArrowDownIcon className="icon-tiny" />
           </div>
@@ -207,14 +229,23 @@ export const LiveSearch = () => {
             Total GMV <KeyboardArrowDownIcon className="icon-tiny" />
           </div>
           <div className="col-1 text-left">UV Value</div>
-          <div className="col-1 text-center">Action</div>
+          {/* <div className="col-1 text-center">Action</div> */}
         </div>
 
         {/* Table Body */}
         {getPaginatedData().map((row, index) => (
           <div key={index} className="table-row">
             <div className="col-1 flex-align-center">
-              <div className="thumbnail"></div>
+              <div className="thumbnail">
+                <img
+                  src={
+                    row.imageurl ||
+                    "https://play-lh.googleusercontent.com/5vcrZX1-Rx6NpuOASKSUWqMpQqbFTiLOZ-IV8CehAP3XycsmaKJvp36BJOxaKhq8TWc"
+                  }
+                  alt={row.Shop || "Shop Thumbnail"}
+                  className="thumbnail-img"
+                />
+              </div>
               <div className="stream-info">
                 <div className="stream-title">
                   {row.Title || "Untitled Stream"}
@@ -228,7 +259,13 @@ export const LiveSearch = () => {
 
             <div className="col-1">
               <div className="creator-container">
-                <div className="creator-avatar"></div>
+                <div className="creator-avatar">
+                  <img
+                    src="https://products.shureweb.eu/shure_product_db/product_main_images/files/c25/16a/40-/original/ce632827adec4e1842caa762f10e643d.webp"
+                    alt=""
+                    className="avatar-img"
+                  />
+                </div>
                 <div className="creator-info">
                   <div className="creator-name">
                     {row["Creator Name"] || row.Channel || "Unknown Creator"}
@@ -244,17 +281,24 @@ export const LiveSearch = () => {
               </div>
             </div>
 
-            <div className="col-1  ">
+            {/* <div className="col-1  ">
               <div className="time-info">
                 <div>Start Time: {row["Start Time"] || "N/A"}</div>
                 <div>End Time: {row["End Time"] || "N/A"}</div>
+                <div>LIVE Duration: {row["Live Duration"] || "N/A"}</div>
+              </div>
+            </div> */}
+
+            <div className="col-1  ">
+              <div className="time-info">
+                <div>{row["Total Viewers"] || "0"}</div>
                 <div>LIVE Duration: {row["Live Duration"] || "N/A"}</div>
               </div>
             </div>
 
             <div className="col-1 text-left">{row["Total Viewers"] || "0"}</div>
 
-            <div className="col-1 text-center">{row["Products"] || "0"}</div>
+            {/* <div className="col-1 text-center">{row["Products"] || "0"}</div> */}
 
             <div className="col-1 text-left">
               {row["Total Units Sold"] || "0"}
@@ -262,16 +306,16 @@ export const LiveSearch = () => {
 
             <div className="col-1 text-left">{row["Total GMV"] || "$0"}</div>
 
-            <div className="col-1 text-left">{row["UV Value"] || "$0"}</div>
+            {/* <div className="col-1 text-left">{row["UV Value"] || "$0"}</div> */}
 
-            <div className="col-1 text-center">
+            {/* <div className="col-1 text-center">
               <button className="star-button">
                 <StarBorderIcon
                   className="icon"
                   fill={row.starred ? "#FFD700" : "none"}
                 />
               </button>
-            </div>
+            </div> */}
           </div>
         ))}
 

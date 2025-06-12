@@ -129,25 +129,25 @@ export const TiktokLiveProduct = () => {
       <div className="table-container">
         {/* Table Header */}
         <div className="table-header">
-          <div className="col-2 text-left">Products</div>
-          <div className="col-2 text-left">Shop</div>
+          <div className="col-1 text-left">Products</div>
+          <div className="col-1 text-left">Shop</div>
           <div className="col-1 text-left header-with-icon">
             LIVE Units Sold <KeyboardArrowDownIcon className="icon-tiny" />
           </div>
-          <div className="col-1 text-right header-with-icon">
+          <div className="col-1 text-left header-with-icon">
             LIVE GMV <KeyboardArrowDownIcon className="icon-tiny" />
           </div>
-          <div className="col-1 text-right header-with-icon">
+          <div className="col-1 text-left header-with-icon">
             LIVE Sessions <KeyboardArrowDownIcon className="icon-tiny" />
           </div>
           <div className="col-1 text-left">Top GMV LIVE Streams</div>
-          <div className="col-1 text-center">Action</div>
+          {/* <div className="col-1 text-center">Action</div> */}
         </div>
 
         {/* Table Body */}
         {getPaginatedData().map((row, index) => (
           <div key={index} className="table-row">
-            <div className="col-2 flex-align-center ">
+            <div className="col-1 flex-align-center ">
               <div className="creator-avatar">
                 <img
                   src="https://products.shureweb.eu/shure_product_db/product_main_images/files/c25/16a/40-/original/ce632827adec4e1842caa762f10e643d.webp"
@@ -171,7 +171,7 @@ export const TiktokLiveProduct = () => {
             </div>
             {/* </div> */}
 
-            <div className="col-2">
+            <div className="col-1">
               <div className="thumbnail-container">
                 <div className="thumbnail">
                   <img
@@ -221,7 +221,7 @@ export const TiktokLiveProduct = () => {
                 </div>
               </div>
             </div>
-
+{/* 
             <div className="col-1 text-center">
               <button className="star-button">
                 <Star
@@ -229,7 +229,7 @@ export const TiktokLiveProduct = () => {
                   fill={row.starred ? "#FFD700" : "none"}
                 />
               </button>
-            </div>
+            </div> */}
           </div>
         ))}
 

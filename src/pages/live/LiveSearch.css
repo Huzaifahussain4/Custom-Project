@@ -111,8 +111,7 @@
 
 /* Icon buttons */
 .icon-button {
-  padding: 5px 15px;
-  font-size: 0.875rem;
+  padding: 4px 15px;
   border: 1px solid #cecece;
   background-color: #ffffff;
   color: #23262f;
@@ -132,7 +131,7 @@
 
 /* Export button */
 .export-button {
-  padding: 5px 15px;
+  padding: 4px 15px;
   font-size: 0.875rem;
   border: 1px solid #cecece;
   background-color: #ffffff;
@@ -165,7 +164,7 @@
 /* Make header bold and add spacing */
 .table-header {
   display: grid;
-  grid-template-columns: 1.5fr 1.5fr 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   font-size: 0.75rem;
   font-weight: 600;
   /* Make headers bold */
@@ -186,7 +185,7 @@
 /* Table rows */
 .table-row {
   display: grid;
-  grid-template-columns: 1.5fr 1.5fr 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   font-size: 0.75rem;
   border-bottom: 1px solid #e5e7eb;
   transition: background-color 0.2s;
@@ -303,6 +302,7 @@
 .creator-container {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .creator-avatar {
